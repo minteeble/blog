@@ -1,4 +1,4 @@
-import { ArticlePageProps } from "../ArticlePage.types";
+import { ArticlePageProps } from "../ArticlePage/ArticlePage.types";
 
 export interface ArticleProps extends ArticlePageProps {
   title: string;
