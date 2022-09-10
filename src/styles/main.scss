@@ -3,3 +3,12 @@
 
 // Components
 @import "/src/components/components.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Dallas PS";
+  font-style: normal;
+  font-weight: 400;
+}
