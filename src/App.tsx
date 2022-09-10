@@ -3,8 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 
 const App = () => {
-  const socials = { Discord: "#", Instagram: "#" };
-
   return (
     <div className="app">
       <BrowserRouter>
