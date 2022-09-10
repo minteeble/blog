@@ -1,0 +1,4 @@
+{
+  "build/main.css": "http://localhost:8080/build/main.css",
+  "build/main.js": "http://localhost:8080/build/main.js"
+}
