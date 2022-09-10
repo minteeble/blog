@@ -30,16 +30,7 @@ const ArticlePage = (props: ArticlePageProps) => {
     data: {
       data: {
         posts: {
-          nodes: [
-            {
-              featuredImage: {
-                node: {
-                  link: "",
-                },
-                title: "",
-              },
-            },
-          ],
+          nodes: [],
         },
       },
     },
@@ -99,6 +90,8 @@ const ArticlePage = (props: ArticlePageProps) => {
       },
     }).then((result) => {
       setSide(result);
+      console.log("hello");
+      console.log(result);
     });
   }, []);
 
@@ -129,16 +122,14 @@ const ArticlePage = (props: ArticlePageProps) => {
     data: {
       data: {
         posts: {
-          nodes: [
-            {
-              featuredImage: {
-                node: {
-                  link: string;
-                };
-                title: string;
+          nodes: {
+            featuredImage: {
+              node: {
+                link: string;
               };
-            }
-          ];
+            };
+            title: string;
+          }[];
         };
       };
     };
@@ -174,15 +165,24 @@ const ArticlePage = (props: ArticlePageProps) => {
     },
   };
 
-  for (let i = 0; i < SidebarArticles; i++) {
+  console.log("Nodes", side.data.data.posts.nodes);
+
+  let nodesLength =
+    side.data.data.posts.nodes.length > SidebarArticles
+      ? SidebarArticles
+      : side.data.data.posts.nodes.length;
+
+  for (let i = 0; i < nodesLength; i++) {
+    console.log("Index", i);
     let x: SideData = {
       imageLink: side.data.data.posts.nodes[i].featuredImage.node.link,
-      title: side.data.data.posts.nodes[i].featuredImage.title,
+      title: side.data.data.posts.nodes[i].title,
     };
 
     SidebarData.push(x);
   }
 
+  console.log("y");
   console.log(SidebarData);
 
   return (
