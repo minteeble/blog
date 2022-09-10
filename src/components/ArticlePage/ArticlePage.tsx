@@ -95,9 +95,6 @@ const ArticlePage = (props: ArticlePageProps) => {
     });
   }, []);
 
-  console.log("x");
-  console.log(side);
-
   interface article {
     data: {
       data: {
@@ -165,8 +162,6 @@ const ArticlePage = (props: ArticlePageProps) => {
     },
   };
 
-  console.log("Nodes", side.data.data.posts.nodes);
-
   let nodesLength =
     side.data.data.posts.nodes.length > SidebarArticles
       ? SidebarArticles
@@ -192,9 +187,7 @@ const ArticlePage = (props: ArticlePageProps) => {
         content={articleData.content}
         author={articleData.author}
       />
-      {SidebarData.map((x: SideData, index: number) => {
-        <Sidebar />;
-      })}
+      <Sidebar data={SidebarData} />
     </>
   );
 };
