@@ -13,9 +13,7 @@ const Article = (props: ArticleProps) => {
         }}
       >
         <h1 id="title" dangerouslySetInnerHTML={{ __html: props.title }}></h1>
-        <main>
-          <p dangerouslySetInnerHTML={{ __html: props.content }}></p>
-        </main>
+        <p id="content" dangerouslySetInnerHTML={{ __html: props.content }}></p>
         <div id="author">
           <img src={props.author.avatar} alt="avatar" />
           <h4>

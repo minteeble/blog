@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { ArticlePageProps } from "./ArticlePage.types";
 import Axios from "axios";
+import { ArticlePageProps } from "./ArticlePage.types";
 import { Article } from "./../Article";
 import Sidebar from "../Sidebar";
 
@@ -38,11 +38,13 @@ const ArticlePage = (props: ArticlePageProps) => {
     },
   });
 
-  let articleId = 8;
+  let lang = "en";
+  let topic = "second";
+  let title = "lorem22";
   let SidebarArticles = 4;
   //query
   const query = `{
-    post(id: ${articleId}, idType: DATABASE_ID) {
+    post(id: "/${lang}/${topic}/${title}/" , idType: URI) {
       author {
         node {
           avatar {
@@ -180,9 +182,6 @@ const ArticlePage = (props: ArticlePageProps) => {
 
     SidebarData.push(x);
   }
-
-  console.log("y");
-  console.log(SidebarData);
 
   return (
     <>
