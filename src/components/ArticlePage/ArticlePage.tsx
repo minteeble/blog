@@ -4,6 +4,8 @@ import Axios from "axios";
 import { Article } from "./../Article";
 import Sidebar from "../Sidebar";
 
+const endpoint = "https://cms-blog-backend.minteeble.com/mintql";
+
 const ArticlePage = (props: ArticlePageProps) => {
   //response state
   const [res, setRes] = useState<article>({
@@ -36,11 +38,11 @@ const ArticlePage = (props: ArticlePageProps) => {
     },
   });
 
-  let articleId = 10;
-  let SidebarArticles = 3;
+  let articleId = 8;
+  let SidebarArticles = 4;
   //query
   const query = `{
-    post(id: "${articleId}", idType: DATABASE_ID) {
+    post(id: ${articleId}, idType: DATABASE_ID) {
       author {
         node {
           avatar {
@@ -60,7 +62,7 @@ const ArticlePage = (props: ArticlePageProps) => {
       nodes {
         featuredImage {
           node {
-            link
+            guid
           }
         }
         title
@@ -71,7 +73,7 @@ const ArticlePage = (props: ArticlePageProps) => {
   //api call
   useEffect(() => {
     Axios({
-      url: "http://blog.local/graphql",
+      url: endpoint,
       method: "post",
       data: {
         query: query,
@@ -83,7 +85,7 @@ const ArticlePage = (props: ArticlePageProps) => {
 
   useEffect(() => {
     Axios({
-      url: "http://blog.local/graphql",
+      url: endpoint,
       method: "post",
       data: {
         query: sideQuery,
@@ -94,6 +96,8 @@ const ArticlePage = (props: ArticlePageProps) => {
       console.log(result);
     });
   }, []);
+
+  console.log(side);
 
   interface article {
     data: {
@@ -122,7 +126,7 @@ const ArticlePage = (props: ArticlePageProps) => {
           nodes: {
             featuredImage: {
               node: {
-                link: string;
+                guid: string;
               };
             };
             title: string;
@@ -170,7 +174,7 @@ const ArticlePage = (props: ArticlePageProps) => {
   for (let i = 0; i < nodesLength; i++) {
     console.log("Index", i);
     let x: SideData = {
-      imageLink: side.data.data.posts.nodes[i].featuredImage.node.link,
+      imageLink: side.data.data.posts.nodes[i].featuredImage.node.guid,
       title: side.data.data.posts.nodes[i].title,
     };
 

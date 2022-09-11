@@ -4,9 +4,12 @@ const Preview = (props: PreviewProps) => {
   return (
     <>
       <div className="preview">
-        <img src={props.imageLink} alt={props.title} />
-        <h5>{props.title}</h5>
-        preview
+        <a href="#">
+          <div className="preview-image">
+            <img src={props.imageLink} alt={props.title} />
+          </div>
+          <h4>{props.title}</h4>
+        </a>
       </div>
     </>
   );
