@@ -1,18 +1,16 @@
+//fonts
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
+
 // ui-components CSS
 @import "/node_modules/@minteeble/ui-components/dist/css/style.css";
 
 // Components
 @import "/src/components/components.scss";
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "in  ";
-  font-family: "Inter", sans-serif;
-  font-weight: 400;
 }
 
 body {
@@ -37,4 +35,14 @@ img {
   max-height: 100%;
   width: unset;
   height: unset;
+}
+
+.kanit {
+  font-family: "Kanit", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.12rem;
+}
+
+.mont {
+  font-family: "Montserrat", sans-serif;
 }

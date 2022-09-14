@@ -1,3 +1,1 @@
-export interface SidebarProps {
-  data: any;
-}
+export interface SidebarProps {}

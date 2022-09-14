@@ -1,4 +1,4 @@
-import { PreviewProps } from "./Preview.types";
+import { PreviewProps } from "./SidebarPreview.types";
 
 const Preview = (props: PreviewProps) => {
   return (

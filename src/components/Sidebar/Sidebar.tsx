@@ -1,24 +1,118 @@
-import { PageCard } from "@minteeble/ui-components";
-import Preview from "./Preview";
-import { SidebarProps } from "./Sidebar.types";
+import { useState, useEffect } from "react";
+import Axios from "axios";
+import SidebarSection from "./SidebarSection";
 
-const Sidebar = (props: SidebarProps) => {
+const Sidebar = () => {
+  const endpoint = "https://cms-blog-backend.minteeble.com/mintql";
+
+  const sections = ["Section 1", "Sections 2"];
+
+  const [side, setSide] = useState<side>({
+    data: {
+      data: {
+        posts: {
+          edges: [],
+        },
+      },
+    },
+  });
+
+  const sideQuery = `{
+  posts {
+    edges {
+      node {
+        featuredImage {
+          node {
+            guid
+          }
+        }
+        content(format: RENDERED)
+        title(format: RENDERED)
+      }
+    }
+  }
+}
+`;
+
+  useEffect(() => {
+    Axios({
+      url: endpoint,
+      method: "post",
+      data: {
+        query: sideQuery,
+      },
+    }).then((result) => {
+      setSide(result);
+    });
+  }, []);
+
+  interface side {
+    data: {
+      data: {
+        posts: {
+          edges: {
+            node: {
+              featuredImage: {
+                node: {
+                  guid: string;
+                };
+              };
+              content: string;
+              title: string;
+            };
+          }[];
+        };
+      };
+    };
+  }
+
+  interface sectionData {
+    imageLink: string;
+    title: string;
+    content: string;
+  }
+
+  let SidebarData: sectionData[] = [
+    {
+      imageLink: "",
+      title: "",
+      content: "",
+    },
+  ];
+
+  let edgesLength =
+    side.data.data.posts.edges.length > sections.length
+      ? sections.length - 1
+      : side.data.data.posts.edges.length;
+
+  let y = side.data.data.posts.edges;
+
+  for (let i = 0; i < edgesLength; i++) {
+    let x: sectionData = {
+      imageLink: y[i].node.featuredImage.node.guid,
+      title: y[i].node.title,
+      content: y[i].node.content,
+    };
+
+    SidebarData.push(x);
+  }
+
   return (
     <>
       <div id="sidebar">
-        <PageCard
-          style={{
-            borderRadius: "2rem 0 0 2rem",
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
-          {props.data.map((x: any, index: number) => {
-            return (
-              <Preview key={index} imageLink={x.imageLink} title={x.title} />
-            );
-          })}
-        </PageCard>
+        {SidebarData.map((x: any, index: number) => {
+          return (
+            <SidebarSection
+              key={index}
+              name={sections[index]}
+              data={{
+                imageLink: SidebarData[index].imageLink,
+                title: SidebarData[index].title,
+                content: SidebarData[index].content,
+              }}
+            />
+          );
+        })}
       </div>
     </>
   );
