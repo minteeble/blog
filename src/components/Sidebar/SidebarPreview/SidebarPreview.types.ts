@@ -1,6 +1,5 @@
-import { StringIterator } from "lodash";
-
-export interface PreviewProps {
+export interface SidebarPreviewProps {
   imageLink: string;
   title: string;
+  content: string;
 }

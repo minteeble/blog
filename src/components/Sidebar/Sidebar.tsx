@@ -5,7 +5,8 @@ import SidebarSection from "./SidebarSection";
 const Sidebar = () => {
   const endpoint = "https://cms-blog-backend.minteeble.com/mintql";
 
-  const sections = ["Section 1", "Sections 2"];
+  const sections = ["Section 1", "Section 2"];
+  const sectionPosts = 3;
 
   const [side, setSide] = useState<side>({
     data: {
@@ -81,8 +82,8 @@ const Sidebar = () => {
   ];
 
   let edgesLength =
-    side.data.data.posts.edges.length > sections.length
-      ? sections.length - 1
+    side.data.data.posts.edges.length > sectionPosts
+      ? sectionPosts
       : side.data.data.posts.edges.length;
 
   let y = side.data.data.posts.edges;
@@ -97,19 +98,17 @@ const Sidebar = () => {
     SidebarData.push(x);
   }
 
+  SidebarData.shift();
+
   return (
     <>
       <div id="sidebar">
-        {SidebarData.map((x: any, index: number) => {
+        {sections.map((x: any, index: number) => {
           return (
             <SidebarSection
               key={index}
               name={sections[index]}
-              data={{
-                imageLink: SidebarData[index].imageLink,
-                title: SidebarData[index].title,
-                content: SidebarData[index].content,
-              }}
+              data={SidebarData}
             />
           );
         })}

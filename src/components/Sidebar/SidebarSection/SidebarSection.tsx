@@ -1,6 +1,10 @@
 import { SidebarSectionProps } from "./SidebarSection.types";
+import SidebarPreview from "../SidebarPreview/SidebarPreview";
 
 const SidebarSection = (props: SidebarSectionProps) => {
+  let data = props.data;
+  console.log(data);
+
   return (
     <>
       <div className="sidebar-section">
@@ -10,7 +14,18 @@ const SidebarSection = (props: SidebarSectionProps) => {
             dangerouslySetInnerHTML={{ __html: props.name }}
           ></h2>
           <span className="sidebar-section-header-line"></span>
-          <div className="sidebar-section-body"></div>
+        </div>
+        <div className="sidebar-section-body">
+          {data.map((x: any, index: number) => {
+            return (
+              <SidebarPreview
+                key={index}
+                imageLink={data[index].imageLink}
+                title={data[index].title}
+                content={data[index].content}
+              />
+            );
+          })}
         </div>
       </div>
     </>
