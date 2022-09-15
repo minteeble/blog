@@ -22,6 +22,7 @@ const SidebarSection = (props: SidebarSectionProps) => {
                 imageLink={data[index].imageLink}
                 title={data[index].title}
                 excerpt={data[index].excerpt}
+                uri={data[index].uri}
               />
             );
           })}

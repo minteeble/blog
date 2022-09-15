@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom";
 import { SidebarPreviewProps } from "./SidebarPreview.types";
 
 const SidebarPreview = (props: SidebarPreviewProps) => {
   return (
     <>
-      <a className="sidebar-preview" href="#">
+      <Link className="sidebar-preview" to={props.uri}>
         <div className="sidebar-preview-image">
           <img
             className="sidebar-preview-image-guid"
@@ -18,7 +19,7 @@ const SidebarPreview = (props: SidebarPreviewProps) => {
             dangerouslySetInnerHTML={{ __html: props.excerpt }}
           ></p>
         </div>
-      </a>
+      </Link>
     </>
   );
 };

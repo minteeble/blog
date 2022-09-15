@@ -29,6 +29,7 @@ const Sidebar = () => {
         }
         excerpt(format: RENDERED)
         title(format: RENDERED)
+        uri
       }
     }
   }
@@ -60,6 +61,7 @@ const Sidebar = () => {
               };
               excerpt: string;
               title: string;
+              uri: string;
             };
           }[];
         };
@@ -71,6 +73,7 @@ const Sidebar = () => {
     imageLink: string;
     title: string;
     excerpt: string;
+    uri: string;
   }
 
   let SidebarData: sectionData[] = [
@@ -78,6 +81,7 @@ const Sidebar = () => {
       imageLink: "",
       title: "",
       excerpt: "",
+      uri: "",
     },
   ];
 
@@ -95,6 +99,7 @@ const Sidebar = () => {
         "https://cms-blog-backend.minteeble.com/wp-content/uploads/2022/09/Desktop-1.jpg",
       title: y[i].node.title ?? "-",
       excerpt: y[i].node.excerpt ?? "-",
+      uri: y[i].node.uri,
     };
 
     SidebarData.push(x);

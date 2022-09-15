@@ -4,5 +4,6 @@ export interface SidebarSectionProps {
     imageLink: string;
     title: string;
     excerpt: string;
+    uri: string;
   }[];
 }

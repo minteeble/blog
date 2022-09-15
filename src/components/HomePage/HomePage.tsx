@@ -90,7 +90,9 @@ const HomePage = () => {
 
   for (let i = 0; i < node; i++) {
     let x: CardProps = {
-      imageLink: y[i].node.featuredImage.node.guid,
+      imageLink:
+        y[i].node.featuredImage.node.guid ??
+        "https://cms-blog-backend.minteeble.com/wp-content/uploads/2022/09/Desktop-1.jpg",
       topic: y[i].node.categories.nodes[0].name,
       title: y[i].node.title ?? "-",
       uri: y[i].node.uri ?? "/",
@@ -112,8 +114,6 @@ const HomePage = () => {
 
     Previews.push(x);
   }
-
-  console.log(Previews);
 
   return (
     <>

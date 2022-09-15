@@ -1,49 +1,43 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
+import { useParams } from "react-router";
 import { ArticlePageProps } from "./ArticlePage.types";
-import { Article } from "./../Article";
+import { ArticleBody } from "../ArticleBody";
 
 const endpoint = "https://cms-blog-backend.minteeble.com/mintql";
 
 const ArticlePage = (props: ArticlePageProps) => {
-  //response state
   const [res, setRes] = useState<article>({
     data: {
       data: {
         post: {
+          categories: {
+            edges: [],
+          },
           content: "",
           title: "",
-          author: {
-            node: {
-              firstName: "",
-              lastName: "",
-              avatar: {
-                url: "",
-              },
-            },
-          },
+          date: "",
         },
       },
     },
   });
 
-  let lang = "en";
-  let topic = "second";
-  let title = "lorem22";
+  let { lang } = useParams();
+  let { topic } = useParams();
+  let { title } = useParams();
   //query
-  const query = `{
-    post(id: "/${lang}/${topic}/${title}/" , idType: URI) {
-      author {
-        node {
-          avatar {
-            url
+  const articleQuery = `{
+    post(id: "/${lang}/${topic}/${title}/", idType: URI) {
+      categories {
+        edges {
+          node {
+            name
           }
-          firstName
-          lastName
         }
       }
       content(format: RENDERED)
       title(format: RENDERED)
+      date
     }
   }`;
 
@@ -53,28 +47,29 @@ const ArticlePage = (props: ArticlePageProps) => {
       url: endpoint,
       method: "post",
       data: {
-        query: query,
+        query: articleQuery,
       },
     }).then((result) => {
       setRes(result);
     });
   }, []);
 
+  console.log(res);
+
   interface article {
     data: {
       data: {
         post: {
+          categories: {
+            edges: {
+              node: {
+                name: string;
+              };
+            }[];
+          };
           content: string;
           title: string;
-          author: {
-            node: {
-              firstName: string;
-              lastName: string;
-              avatar: {
-                url: string;
-              };
-            };
-          };
+          date: string;
         };
       };
     };
@@ -83,33 +78,30 @@ const ArticlePage = (props: ArticlePageProps) => {
   interface data {
     title: string;
     content: string;
-    author: {
-      avatar: string;
-      firstName: string;
-      lastName: string;
-    };
+    topic: string;
+    date: string;
   }
 
   let articleData: data;
 
-  let short = res.data.data.post;
+  let y = res.data.data.post;
+
+  let topicCheck = y.categories.edges[0] ? y.categories.edges[0].node.name : "";
 
   articleData = {
-    title: short.title,
-    content: short.content,
-    author: {
-      firstName: short.author.node.firstName,
-      lastName: short.author.node.lastName,
-      avatar: short.author.node.avatar.url,
-    },
+    title: y.title,
+    content: y.content,
+    topic: topicCheck,
+    date: y.date,
   };
 
   return (
     <>
-      <Article
+      <ArticleBody
         title={articleData.title}
         content={articleData.content}
-        author={articleData.author}
+        date={articleData.date.slice(0, 10)}
+        topic={articleData.topic}
       />
     </>
   );

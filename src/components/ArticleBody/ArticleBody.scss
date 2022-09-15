@@ -1,0 +1,22 @@
+.article-body {
+  max-width: 70%;
+
+  .article-body-topic {
+    margin-bottom: 2rem;
+    color: #737373;
+  }
+
+  .article-body-title {
+    margin-bottom: 0.6rem;
+  }
+
+  .article-body-date {
+    color: #737373;
+    margin-bottom: 4rem;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 26px;
+    letter-spacing: 0.095em;
+  }
+}
