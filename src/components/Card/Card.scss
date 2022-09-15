@@ -1,0 +1,19 @@
+.card {
+  height: 20.6rem;
+  width: 20.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  color: white;
+  padding: 1rem;
+
+  .card-topic {
+    margin-bottom: 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  .card-title {
+    margin-bottom: 2rem;
+  }
+}

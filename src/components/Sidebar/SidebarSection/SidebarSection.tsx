@@ -3,7 +3,6 @@ import SidebarPreview from "../SidebarPreview/SidebarPreview";
 
 const SidebarSection = (props: SidebarSectionProps) => {
   let data = props.data;
-  console.log(data);
 
   return (
     <>
@@ -22,7 +21,7 @@ const SidebarSection = (props: SidebarSectionProps) => {
                 key={index}
                 imageLink={data[index].imageLink}
                 title={data[index].title}
-                content={data[index].content}
+                excerpt={data[index].excerpt}
               />
             );
           })}

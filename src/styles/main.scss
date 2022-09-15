@@ -1,5 +1,5 @@
 //fonts
-@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700;800;900&family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
 
 // ui-components CSS
 @import "/node_modules/@minteeble/ui-components/dist/css/style.css";
@@ -41,8 +41,24 @@ img {
   font-family: "Kanit", sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.12rem;
+  line-height: 1.1rem;
+  font-weight: 500;
 }
 
 .montserrat {
   font-family: "Montserrat", sans-serif;
+}
+
+.spaced {
+  font-family: "Montserrat", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: 0.255em;
+  text-transform: uppercase;
+}
+
+.app-body {
+  margin: 0 9%;
+  position: relative;
 }

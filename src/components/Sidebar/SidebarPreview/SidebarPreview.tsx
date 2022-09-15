@@ -15,7 +15,7 @@ const SidebarPreview = (props: SidebarPreviewProps) => {
           <h4 className="sidebar-preview-info-title kanit">{props.title}</h4>
           <p
             className="sidebar-preview-info-content montserrat"
-            dangerouslySetInnerHTML={{ __html: props.content }}
+            dangerouslySetInnerHTML={{ __html: props.excerpt }}
           ></p>
         </div>
       </a>

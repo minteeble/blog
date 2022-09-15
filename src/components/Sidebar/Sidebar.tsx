@@ -27,7 +27,7 @@ const Sidebar = () => {
             guid
           }
         }
-        content(format: RENDERED)
+        excerpt(format: RENDERED)
         title(format: RENDERED)
       }
     }
@@ -58,7 +58,7 @@ const Sidebar = () => {
                   guid: string;
                 };
               };
-              content: string;
+              excerpt: string;
               title: string;
             };
           }[];
@@ -70,14 +70,14 @@ const Sidebar = () => {
   interface sectionData {
     imageLink: string;
     title: string;
-    content: string;
+    excerpt: string;
   }
 
   let SidebarData: sectionData[] = [
     {
       imageLink: "",
       title: "",
-      content: "",
+      excerpt: "",
     },
   ];
 
@@ -90,9 +90,11 @@ const Sidebar = () => {
 
   for (let i = 0; i < edgesLength; i++) {
     let x: sectionData = {
-      imageLink: y[i].node.featuredImage.node.guid,
-      title: y[i].node.title,
-      content: y[i].node.content,
+      imageLink:
+        y[i].node.featuredImage.node.guid ??
+        "https://cms-blog-backend.minteeble.com/wp-content/uploads/2022/09/Desktop-1.jpg",
+      title: y[i].node.title ?? "-",
+      excerpt: y[i].node.excerpt ?? "-",
     };
 
     SidebarData.push(x);

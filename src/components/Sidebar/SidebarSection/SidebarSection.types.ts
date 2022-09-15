@@ -3,6 +3,6 @@ export interface SidebarSectionProps {
   data: {
     imageLink: string;
     title: string;
-    content: string;
+    excerpt: string;
   }[];
 }

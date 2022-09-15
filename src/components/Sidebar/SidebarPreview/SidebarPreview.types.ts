@@ -1,5 +1,5 @@
 export interface SidebarPreviewProps {
   imageLink: string;
   title: string;
-  content: string;
+  excerpt: string;
 }
