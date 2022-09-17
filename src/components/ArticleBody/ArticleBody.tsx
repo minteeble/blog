@@ -1,5 +1,7 @@
 import React from "react";
 import { ArticleBodyProps } from "./ArticleBody.types";
+import { FacebookShareButton } from "react-share";
+import { FacebookIcon } from "react-share";
 
 const ArticleBody = (props: ArticleBodyProps) => {
   return (
@@ -15,6 +17,13 @@ const ArticleBody = (props: ArticleBodyProps) => {
           className="article-body-content montserrat"
           dangerouslySetInnerHTML={{ __html: props.content }}
         ></p>
+        <div className="article-body-share">
+          <h4 className="spaced">share this post</h4>
+          <FacebookShareButton url={window.location.href}>
+            <FacebookIcon></FacebookIcon>
+          </FacebookShareButton>
+          <span className="article-body-share-line"></span>
+        </div>
       </div>
     </>
   );

@@ -3,7 +3,7 @@
 
   .article-body-topic {
     margin-bottom: 2rem;
-    color: #737373;
+    color: var(--light-text-color);
   }
 
   .article-body-title {
@@ -11,7 +11,7 @@
   }
 
   .article-body-date {
-    color: #737373;
+    color: var(--light-text-color);
     margin-bottom: 4rem;
     font-style: normal;
     font-weight: 500;

@@ -3,7 +3,7 @@ import Axios from "axios";
 import SidebarSection from "./SidebarSection";
 import { SidebarProps } from "@minteeble/ui-components";
 
-const Sidebar = (props: SidebarProps) => {
+const Sidebar = () => {
   const endpoint = "https://cms-blog-backend.minteeble.com/mintql";
 
   const sections = ["Section 1", "Section 2"];
