@@ -15,8 +15,42 @@
     margin-bottom: 4rem;
     font-style: normal;
     font-weight: 500;
-    font-size: 20px;
     line-height: 26px;
     letter-spacing: 0.095em;
+  }
+
+  .article-body-share {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: fit-content;
+    margin-top: 4rem;
+
+    .article-body-share-title {
+      color: var(--light-text-color);
+      margin-bottom: 1rem;
+    }
+
+    .article-body-share-social {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-left: -1%;
+      margin-bottom: 1rem;
+
+      .article-body-share-social-item {
+        position: relative;
+        transition: all 0.15s ease;
+        &:hover {
+          transform: scale(1.2);
+        }
+      }
+    }
+    .article-body-share-line {
+      background: var(--primary-color);
+      width: 70%;
+      height: 0.3rem;
+    }
   }
 }
