@@ -54,8 +54,6 @@ const ArticlePage = (props: ArticlePageProps) => {
     });
   }, []);
 
-  console.log(res);
-
   interface article {
     data: {
       data: {

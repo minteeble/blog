@@ -91,11 +91,11 @@ const HomePage = () => {
   for (let i = 0; i < node; i++) {
     let x: CardProps = {
       imageLink:
-        y[i].node.featuredImage.node.guid ??
+        (y[i].node.featuredImage && y[i].node.featuredImage.node.guid) ||
         "https://cms-blog-backend.minteeble.com/wp-content/uploads/2022/09/Desktop-1.jpg",
       topic: y[i].node.categories.nodes[0].name,
-      title: y[i].node.title ?? "-",
-      uri: y[i].node.uri ?? "/",
+      title: y[i].node.title || "-",
+      uri: y[i].node.uri || "/",
     };
 
     Cards.push(x);
@@ -104,12 +104,12 @@ const HomePage = () => {
   for (let i = cardNum; i < y.length; i++) {
     let x: PreviewProps = {
       imageLink:
-        y[i].node.featuredImage.node.guid ??
+        (y[i].node.featuredImage && y[i].node.featuredImage.node.guid) ||
         "https://cms-blog-backend.minteeble.com/wp-content/uploads/2022/09/Desktop-1.jpg",
       topic: y[i].node.categories.nodes[0].name,
-      title: y[i].node.title ?? "-",
-      uri: y[i].node.uri ?? "/",
-      excerpt: y[i].node.excerpt ?? "-",
+      title: y[i].node.title || "-",
+      uri: y[i].node.uri || "/",
+      excerpt: y[i].node.excerpt || "-",
     };
 
     Previews.push(x);
