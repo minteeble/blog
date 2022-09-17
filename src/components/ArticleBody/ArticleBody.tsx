@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import { ArticleBodyProps } from "./ArticleBody.types";
 import {
   FacebookShareButton,
@@ -14,6 +14,9 @@ import {
   TelegramIcon,
   EmailIcon,
 } from "react-share";
+import { CardProps } from "../Card/Card.types";
+import Card from "../Card";
+import NextPrev from "../NextPrev";
 
 const ArticleBody = (props: ArticleBodyProps) => {
   return (
@@ -29,6 +32,7 @@ const ArticleBody = (props: ArticleBodyProps) => {
           className="article-body-content montserrat"
           dangerouslySetInnerHTML={{ __html: props.content }}
         ></p>
+        <NextPrev id={props.id} />
         <div className="article-body-share">
           <h4 className="article-body-share-title spaced">share this post</h4>
           <div className="article-body-share-social">
@@ -90,6 +94,20 @@ const ArticleBody = (props: ArticleBodyProps) => {
             </EmailShareButton>
           </div>
           <span className="article-body-share-line"></span>
+        </div>
+        <div className="article-body-related">
+          <h4 className="article-body-related-title spaced">related posts</h4>
+          {props.related.map((x: CardProps, index: number) => {
+            return (
+              <Card
+                key={index}
+                imageLink={x.imageLink}
+                topic={x.topic}
+                title={x.title}
+                uri={x.uri}
+              />
+            );
+          })}
         </div>
       </div>
     </>

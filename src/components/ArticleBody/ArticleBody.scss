@@ -19,13 +19,19 @@
     letter-spacing: 0.095em;
   }
 
+  .article-body-content {
+    font-weight: 500;
+    line-height: 26px;
+    letter-spacing: 0.095em;
+  }
+
   .article-body-share {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
     width: fit-content;
-    margin-top: 4rem;
+    margin: 4rem 0;
 
     .article-body-share-title {
       color: var(--light-text-color);
@@ -51,6 +57,13 @@
       background: var(--primary-color);
       width: 70%;
       height: 0.3rem;
+    }
+  }
+
+  .article-body-related {
+    .article-body-related-title {
+      color: var(--light-text-color);
+      margin-bottom: 1rem;
     }
   }
 }
