@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import { NextPrevProps } from "./NextPrev.types";
 import { useEffect, useState } from "react";
 import Axios from "axios";
-import ReactDOM from "react-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { useParams } from "react-router";
 
 const NextPrev = (props: NextPrevProps) => {
   const endpoint = "https://cms-blog-backend.minteeble.com/mintql";
@@ -19,8 +19,10 @@ const NextPrev = (props: NextPrevProps) => {
     },
   });
 
+  let { lang } = useParams();
+
   const query = `{
-        posts {
+        posts (where: {language: ${lang!.toUpperCase()}}) {
           nodes {
             databaseId
             uri
@@ -78,7 +80,9 @@ const NextPrev = (props: NextPrevProps) => {
 
   let next = index + 1 >= ids.length ? -1 : index + 1;
 
-  let prev = index - 1 <= 0 ? -1 : index - 1;
+  let prev = index - 1 < 0 ? -1 : index - 1;
+
+  console.log(`index: ${index},next: ${next},prev: ${prev}`);
 
   return (
     <>

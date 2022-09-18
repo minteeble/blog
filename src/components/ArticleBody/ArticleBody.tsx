@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { ArticleBodyProps } from "./ArticleBody.types";
 import {
   FacebookShareButton,
@@ -28,6 +27,11 @@ const ArticleBody = (props: ArticleBodyProps) => {
           dangerouslySetInnerHTML={{ __html: props.title }}
         ></h1>
         <h5 className="article-body-date spaced">{props.date}</h5>
+        <img
+          className="article-body-featured"
+          src={props.guid}
+          alt={props.title}
+        />
         <p
           className="article-body-content montserrat"
           dangerouslySetInnerHTML={{ __html: props.content }}

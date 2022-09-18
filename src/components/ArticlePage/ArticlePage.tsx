@@ -16,6 +16,11 @@ const ArticlePage = (props: ArticlePageProps) => {
           categories: {
             edges: [],
           },
+          featuredImage: {
+            node: {
+              guid: "",
+            },
+          },
           content: "",
           title: "",
           uri: "",
@@ -47,6 +52,11 @@ const ArticlePage = (props: ArticlePageProps) => {
           node {
             name
           }
+        }
+      }
+      featuredImage {
+        node {
+          guid
         }
       }
       content(format: RENDERED)
@@ -83,6 +93,11 @@ const ArticlePage = (props: ArticlePageProps) => {
               };
             }[];
           };
+          featuredImage: {
+            node: {
+              guid: string;
+            };
+          };
           content: string;
           title: string;
           uri: string;
@@ -99,6 +114,7 @@ const ArticlePage = (props: ArticlePageProps) => {
     topic: string;
     date: string;
     id: number;
+    guid: string;
   }
 
   let articleData: data;
@@ -112,6 +128,9 @@ const ArticlePage = (props: ArticlePageProps) => {
     content: y.content || "-",
     topic: topicCheck,
     date: y.date || "-",
+    guid:
+      (y.featuredImage && y.featuredImage.node.guid) ||
+      "https://cms-blog-backend.minteeble.com/wp-content/uploads/2022/09/Desktop-1.jpg",
     id: y.databaseId ?? "1",
   };
 
@@ -161,7 +180,7 @@ const ArticlePage = (props: ArticlePageProps) => {
       if (z[i].node.uri !== y.uri) {
         let x: CardProps = {
           imageLink:
-            z[i].node.featuredImage.node.guid ||
+            (z[i].node.featuredImage && z[i].node.featuredImage.node.guid) ||
             "https://cms-blog-backend.minteeble.com/wp-content/uploads/2022/09/Desktop-1.jpg",
           topic: z[i].node.categories.edges[0].node.name,
           title: z[i].node.title || "-",
@@ -207,6 +226,7 @@ const ArticlePage = (props: ArticlePageProps) => {
         content={articleData.content}
         date={articleData.date.slice(0, 10)}
         topic={articleData.topic}
+        guid={articleData.guid}
         related={related}
       />
     </>

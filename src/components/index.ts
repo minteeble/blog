@@ -6,3 +6,4 @@ export * from "./Cta";
 export * from "./HomePage";
 export * from "./Preview";
 export * from "./TopicPage";
+export * from "./NextPrev";

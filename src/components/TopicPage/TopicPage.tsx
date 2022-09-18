@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Axios from "axios";
-import { PageCard } from "@minteeble/ui-components";
-import TopicArticle from "./TopicArticle";
+import { useParams } from "react-router";
+import { Preview, PreviewProps } from "../Preview";
+import { toUpper } from "lodash";
 
 const TopicPage = () => {
   const endpoint = "https://cms-blog-backend.minteeble.com/mintql";
-  let topic = "first";
 
   const [res, setRes] = useState<articleData>({
     data: {
@@ -17,29 +17,31 @@ const TopicPage = () => {
     },
   });
 
+  let { lang } = useParams();
+  let { topic } = useParams();
+
   const query = `{
-    posts(where: {categoryName: "${topic}"}) {
+    posts(where: {language: ${lang!.toUpperCase()},categoryName: "${topic}"}) {
       edges {
         node {
-          author {
-            node {
-              avatar {
-                url
-              }
-              firstName
-              lastName
-            }
-          }
-          content(format: RENDERED)
-          title(format: RENDERED)
           featuredImage {
             node {
               guid
             }
           }
+          categories {
+            edges {
+              node {
+                name
+              }
+            }
+          }
+          title(format: RENDERED)
+          excerpt(format: RENDERED)
+          uri
         }
       }
-    }
+    }    
   }`;
 
   useEffect(() => {
@@ -60,88 +62,63 @@ const TopicPage = () => {
         posts: {
           edges: {
             node: {
-              author: {
-                node: {
-                  avatar: {
-                    url: string;
-                  };
-                  firstName: string;
-                  lastName: string;
-                };
-              };
-              content: string;
-              title: string;
               featuredImage: {
                 node: {
                   guid: string;
                 };
               };
+              categories: {
+                edges: {
+                  node: {
+                    name: string;
+                  };
+                }[];
+              };
+              title: string;
+              excerpt: string;
+              uri: string;
             };
           }[];
         };
       };
     };
   }
-
-  interface topicArticle {
-    author: {
-      avatar: string;
-      firstName: string;
-      lastName: string;
-    };
-    content: string;
-    title: string;
-    imageLink: string;
-  }
-
-  let nodesLength = res.data.data.posts.edges.length;
-
-  let TopicArticleData: topicArticle[] = [];
   let edge = res.data.data.posts.edges;
 
+  let nodesLength = edge.length > 0 ? edge.length : 0;
+
+  let previewData: PreviewProps[] = [];
+
   for (let i = 0; i < nodesLength; i++) {
-    let x: topicArticle = {
-      author: {
-        avatar: edge[i].node.author.node.avatar.url,
-        firstName: edge[i].node.author.node.firstName,
-        lastName: edge[i].node.author.node.lastName,
-      },
-      content: edge[i].node.content || "-",
+    let x: PreviewProps = {
+      excerpt: edge[i].node.excerpt || "-",
       title: edge[i].node.title || "-",
       imageLink:
-        edge[i].node.featuredImage.node.guid ||
+        (edge[i].node.featuredImage && edge[i].node.featuredImage.node.guid) ||
         "https://cms-blog-backend.minteeble.com/wp-content/uploads/2022/09/Desktop-1.jpg",
+      topic: edge[i].node.categories.edges[0].node.name,
+      uri: edge[i].node.uri,
     };
-
-    TopicArticleData.push(x);
+    previewData.push(x);
   }
 
   return (
     <>
-      <PageCard
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alingItems: "center",
-          justifyContent: "flex-start",
-          margin: "7rem 20rem 7rem 10rem",
-          borderRadius: "2rem",
-          padding: "5rem",
-        }}
-      >
-        <h1 id="title">Articles of category {topic}</h1>
-        {TopicArticleData.map((x: topicArticle, index: number) => {
+      <div className="topic-body">
+        <h1 className="topic-body-title kanit">Articles of category {topic}</h1>
+        {previewData.map((x: PreviewProps, index: number) => {
           return (
-            <TopicArticle
+            <Preview
               key={index}
-              author={x.author}
-              content={x.content}
-              title={x.title}
               imageLink={x.imageLink}
+              topic={x.topic}
+              title={x.title}
+              excerpt={x.excerpt}
+              uri={x.uri}
             />
           );
         })}
-      </PageCard>
+      </div>
     </>
   );
 };

@@ -12,17 +12,24 @@
 
   .article-body-date {
     color: var(--light-text-color);
-    margin-bottom: 4rem;
     font-style: normal;
     font-weight: 500;
     line-height: 26px;
     letter-spacing: 0.095em;
   }
 
+  .article-body-featured,
+  .article-body-content img {
+    margin: 4rem 0;
+  }
+
   .article-body-content {
     font-weight: 500;
     line-height: 26px;
     letter-spacing: 0.095em;
+    figcaption {
+      display: none;
+    }
   }
 
   .article-body-share {
