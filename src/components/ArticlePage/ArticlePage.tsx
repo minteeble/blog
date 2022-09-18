@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Axios from "axios";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { ArticlePageProps } from "./ArticlePage.types";
 import { ArticleBody } from "../ArticleBody";
 import { CardProps } from "../Card/Card.types";
 
-const endpoint = "https://cms-blog-backend.minteeble.com/mintql";
-const relatedNum = 6;
-
 const ArticlePage = (props: ArticlePageProps) => {
+  const navigate = useNavigate();
+  const endpoint = "https://cms-blog-backend.minteeble.com/mintql";
+  const relatedNum = 6;
+
   const [res, setRes] = useState<article>({
     data: {
       data: {

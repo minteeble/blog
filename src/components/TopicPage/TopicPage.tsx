@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Axios from "axios";
 import { useParams } from "react-router";
 import { Preview, PreviewProps } from "../Preview";
-import { toUpper } from "lodash";
 
 const TopicPage = () => {
   const endpoint = "https://cms-blog-backend.minteeble.com/mintql";
@@ -56,6 +55,8 @@ const TopicPage = () => {
     });
   }, []);
 
+  let edge = res.data.data.posts.edges;
+
   interface articleData {
     data: {
       data: {
@@ -83,7 +84,6 @@ const TopicPage = () => {
       };
     };
   }
-  let edge = res.data.data.posts.edges;
 
   let nodesLength = edge.length > 0 ? edge.length : 0;
 
