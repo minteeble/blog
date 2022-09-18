@@ -100,7 +100,7 @@ const Sidebar = () => {
         "https://cms-blog-backend.minteeble.com/wp-content/uploads/2022/09/Desktop-1.jpg",
       title: y[i].node.title || "-",
       excerpt: y[i].node.excerpt || "-",
-      uri: y[i].node.uri,
+      uri: y[i].node.uri || "/",
     };
 
     SidebarData.push(x);

@@ -106,9 +106,11 @@ const TopicPage = () => {
         firstName: edge[i].node.author.node.firstName,
         lastName: edge[i].node.author.node.lastName,
       },
-      content: edge[i].node.content,
-      title: edge[i].node.title,
-      imageLink: edge[i].node.featuredImage.node.guid,
+      content: edge[i].node.content || "-",
+      title: edge[i].node.title || "-",
+      imageLink:
+        edge[i].node.featuredImage.node.guid ||
+        "https://cms-blog-backend.minteeble.com/wp-content/uploads/2022/09/Desktop-1.jpg",
     };
 
     TopicArticleData.push(x);

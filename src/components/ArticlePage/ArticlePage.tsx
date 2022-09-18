@@ -108,11 +108,11 @@ const ArticlePage = (props: ArticlePageProps) => {
   let topicCheck = y.categories.edges[0]?.node.name ?? "Uncategorized";
 
   articleData = {
-    title: y.title,
-    content: y.content,
+    title: y.title || "-",
+    content: y.content || "-",
     topic: topicCheck,
-    date: y.date,
-    id: y.databaseId,
+    date: y.date || "-",
+    id: y.databaseId ?? "1",
   };
 
   const relatedQuery = `{
@@ -160,10 +160,12 @@ const ArticlePage = (props: ArticlePageProps) => {
     for (let i = 0; i < relatedNode; i++) {
       if (z[i].node.uri !== y.uri) {
         let x: CardProps = {
-          imageLink: z[i].node.featuredImage.node.guid,
+          imageLink:
+            z[i].node.featuredImage.node.guid ||
+            "https://cms-blog-backend.minteeble.com/wp-content/uploads/2022/09/Desktop-1.jpg",
           topic: z[i].node.categories.edges[0].node.name,
-          title: z[i].node.title,
-          uri: z[i].node.uri,
+          title: z[i].node.title || "-",
+          uri: z[i].node.uri || "-",
         };
         related.push(x);
       }
