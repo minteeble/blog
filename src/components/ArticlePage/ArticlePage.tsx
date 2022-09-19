@@ -7,6 +7,7 @@ import { CardProps } from "../Card/Card.types";
 
 const ArticlePage = (props: ArticlePageProps) => {
   const navigate = useNavigate();
+
   const endpoint = "https://cms-blog-backend.minteeble.com/mintql";
   const relatedNum = 6;
 
@@ -76,12 +77,13 @@ const ArticlePage = (props: ArticlePageProps) => {
       data: {
         query: articleQuery,
       },
-    })
-      .then((result) => {
-        setRes(result);
-      })
-      .then();
-  }, []);
+    }).then((result) => {
+      if (result.data.data.post === null) {
+        navigate("/not-found");
+      }
+      setRes(result);
+    });
+  }, [lang, topic, title]);
 
   interface article {
     data: {
@@ -136,7 +138,7 @@ const ArticlePage = (props: ArticlePageProps) => {
   };
 
   const relatedQuery = `{
-    posts(where: {categoryName: "${topicCheck}"}) {
+    posts(where: {categoryName: "${topic}"}) {
       edges {
         node {
           featuredImage {
@@ -174,23 +176,21 @@ const ArticlePage = (props: ArticlePageProps) => {
     });
   }, [topicCheck]);
 
-  useEffect(() => {
-    related = [];
+  related = [];
 
-    for (let i = 0; i < relatedNode; i++) {
-      if (z[i].node.uri !== y.uri) {
-        let x: CardProps = {
-          imageLink:
-            (z[i].node.featuredImage && z[i].node.featuredImage.node.guid) ||
-            "https://cms-blog-backend.minteeble.com/wp-content/uploads/2022/09/Desktop-1.jpg",
-          topic: z[i].node.categories.edges[0].node.name,
-          title: z[i].node.title || "-",
-          uri: z[i].node.uri || "-",
-        };
-        related.push(x);
-      }
+  for (let i = 0; i < relatedNode; i++) {
+    if (z[i].node.uri !== y.uri) {
+      let x: CardProps = {
+        imageLink:
+          (z[i].node.featuredImage && z[i].node.featuredImage.node.guid) ||
+          "https://cms-blog-backend.minteeble.com/wp-content/uploads/2022/09/Desktop-1.jpg",
+        topic: z[i].node.categories.edges[0].node.name,
+        title: z[i].node.title || "-",
+        uri: z[i].node.uri || "-",
+      };
+      related.push(x);
     }
-  }, [rel]);
+  }
 
   interface related {
     data: {

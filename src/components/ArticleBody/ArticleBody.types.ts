@@ -7,5 +7,5 @@ export interface ArticleBodyProps {
   title: string;
   content: string;
   guid: string;
-  related: CardProps[];
+  related: any;
 }

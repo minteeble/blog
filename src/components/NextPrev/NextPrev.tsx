@@ -82,8 +82,6 @@ const NextPrev = (props: NextPrevProps) => {
 
   let prev = index - 1 < 0 ? -1 : index - 1;
 
-  console.log(`index: ${index},next: ${next},prev: ${prev}`);
-
   return (
     <>
       <div className="nextprev">

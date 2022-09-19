@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import Axios from "axios";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { Preview, PreviewProps } from "../Preview";
 
 const TopicPage = () => {
   const endpoint = "https://cms-blog-backend.minteeble.com/mintql";
+  const navigate = useNavigate();
 
   const [res, setRes] = useState<articleData>({
     data: {
@@ -51,6 +52,9 @@ const TopicPage = () => {
         query: query,
       },
     }).then((result) => {
+      if (result.data.data.posts.edges.length >= 0) {
+        navigate("/not-found");
+      }
       setRes(result);
     });
   }, []);
