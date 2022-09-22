@@ -7,6 +7,15 @@
   align-items: flex-start;
   color: white;
   padding: 1rem;
+  background: linear-gradient(
+      180deg,
+      rgba(1, 1, 1, 0.06) 0%,
+      rgba(0, 0, 0, 0.6) 100%
+    ),
+    var(--img);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto 100%;
 
   .card-topic {
     margin-bottom: 0.6rem;

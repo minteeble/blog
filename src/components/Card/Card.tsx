@@ -2,16 +2,11 @@ import Cta from "../Cta";
 import { CardProps } from "./Card.types";
 
 const Card = (props: CardProps) => {
+  const style = { "--img": `url(${props.imageLink})` } as React.CSSProperties;
+
   return (
     <>
-      <div
-        className="card"
-        style={{
-          background: ` linear-gradient(180deg, rgba(1, 1, 1, 0.06) 0%, rgba(0, 0, 0, 0.6) 100%),url(${props.imageLink})`,
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
+      <div className="card" style={style}>
         <h3 className="card-topic spaced">{props.topic}</h3>
         <h2
           className="card-title kanit"

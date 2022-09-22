@@ -23,6 +23,7 @@
         line-height: 129.9%;
         .nextprev-link-body-text-arrow {
           color: var(--light-text-color);
+          margin: 0 0.4rem 0 0;
         }
       }
       .nextprev-link-body-line {
@@ -40,6 +41,11 @@
     .dx {
       align-items: flex-end;
       float: right;
+      .nextprev-link-body-text {
+        .nextprev-link-body-text-arrow {
+          margin: 0 0 0 0.2rem;
+        }
+      }
     }
   }
 
