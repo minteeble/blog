@@ -1037,10 +1037,10 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@minteeble/ui-components@^1.0.5":
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/@minteeble/ui-components/-/ui-components-1.0.5.tgz#f8b458092adcfdc60237e0851a7462bf52177490"
-  integrity sha512-P6XNqbxMGltcLPy+qOLlwbe604avQLwFY19qBjLilMYQUxUune4Z+V8xOGfGb76vRBJIJwETlph+0sw2aLo2Ew==
+"@minteeble/ui-components@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@minteeble/ui-components/-/ui-components-1.0.6.tgz#15491867b07db913728d28c93c16bafd44f2266b"
+  integrity sha512-JdY63wTcpCA33TSzqbfwCA9rsTCdJbp2fc1cJe6Ok+vDa0Tt+d4AcxMtoNrDq6MDO54wMTtWwHu+ykN+w3JRag==
   dependencies:
     react-responsive-combo-box "^1.3.0"
     sass-loader "10.0.0"
