@@ -8,9 +8,23 @@ import {
   MinteebleLogoType,
   NavbarItemPosition,
 } from "@minteeble/ui-components";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
 const BlogNav = (props: BlogNavProps) => {
+  const openDropdown = () => {
+    const topic = document.querySelector(".nav-topic");
+    topic?.classList.toggle("opened");
+  };
+
+  const closeDropdown = () => {
+    const topic = document.querySelector(".nav-topic");
+    if (topic?.classList.contains("opened")) {
+      topic?.classList.remove("opened");
+    }
+  };
+
   const endpoint = "https://cms-blog-backend.minteeble.com/mintql";
 
   const [res, setRes] = useState<nav>({
@@ -83,7 +97,7 @@ const BlogNav = (props: BlogNavProps) => {
     navData.push(x);
   }
 
-  console.log(node, res.data.data.categories.edges, navData);
+  const style = { "--link-num": navData.length } as React.CSSProperties;
 
   return (
     <>
@@ -109,11 +123,45 @@ const BlogNav = (props: BlogNavProps) => {
             position: NavbarItemPosition.Left,
           },
           {
-            content: navData.map((x: navData, index: number) => {
-              return (
-                <p key={index}>{navData[index].name + navData[index].slug}</p>
-              );
-            }),
+            content: (
+              <div className="nav-topic kanit" style={style}>
+                <h3
+                  className="nav-topic-title"
+                  onClick={() => {
+                    openDropdown();
+                  }}
+                >
+                  Categories
+                  <FontAwesomeIcon
+                    className="nav-topic-arrow"
+                    icon={faCaretDown}
+                  />
+                </h3>
+                <div className="nav-topic-dropdown shadow-1">
+                  <ul className="nav-topic-dropdown-list">
+                    {navData.map((x: navData, index: number) => {
+                      return (
+                        <li
+                          key={index}
+                          className="nav-topic-dropdown-list-item"
+                        >
+                          <Link
+                            onClick={() => {
+                              closeDropdown();
+                            }}
+                            className="nav-topic-dropdown-list-item-link"
+                            to={`/en/${x.slug}`}
+                          >
+                            {x.name}
+                          </Link>
+                          <span className="nav-topic-dropdown-list-item-line"></span>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              </div>
+            ),
             position: NavbarItemPosition.Left,
           },
         ]}

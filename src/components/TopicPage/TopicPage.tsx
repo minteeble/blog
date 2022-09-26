@@ -17,8 +17,8 @@ const TopicPage = () => {
     },
   });
 
-  let { lang } = useParams();
-  let { topic } = useParams();
+  const { lang } = useParams();
+  const { topic } = useParams();
 
   const query = `{
     posts(where: {language: ${lang!.toUpperCase()},categoryName: "${topic}"}) {
@@ -52,12 +52,12 @@ const TopicPage = () => {
         query: query,
       },
     }).then((result) => {
-      if (result.data.data.posts.edges.length >= 0) {
+      if (result.data.data.posts.edges.length <= 0) {
         navigate("/not-found");
       }
       setRes(result);
     });
-  }, []);
+  }, [topic, lang]);
 
   let edge = res.data.data.posts.edges;
 
