@@ -19,7 +19,7 @@ const NextPrev = (props: NextPrevProps) => {
     },
   });
 
-  let { lang } = useParams();
+  const { lang } = useParams();
 
   const query = `{
         posts (where: {language: ${lang!.toUpperCase()}}) {
