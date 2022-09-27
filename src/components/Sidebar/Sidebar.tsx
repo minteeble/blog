@@ -2,9 +2,12 @@ import { useState, useEffect } from "react";
 import Axios from "axios";
 import SidebarSection from "./SidebarSection";
 import { SidebarProps } from "@minteeble/ui-components";
+import { useParams } from "react-router";
 
 const Sidebar = () => {
   const endpoint = "https://cms-blog-backend.minteeble.com/mintql";
+
+  const { lang } = useParams();
 
   const sections = ["Section 1", "Section 2"];
   const sectionPosts = 3;
@@ -20,7 +23,7 @@ const Sidebar = () => {
   });
 
   const sideQuery = `{
-  posts {
+    posts(where: {language: ${lang!.toUpperCase()}}) {
     edges {
       node {
         featuredImage {

@@ -1,11 +1,12 @@
 .cards {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   height: 20.6rem;
 }
 
 .home-body {
   position: relative;
   margin-top: 15rem;
+  min-height: 100vh;
 }

@@ -20,16 +20,26 @@
 
   .article-body-featured,
   .article-body-content img {
-    margin: 4rem 0;
+    margin: 2rem 0;
   }
 
   .article-body-content {
     font-weight: 500;
     line-height: 26px;
     letter-spacing: 0.095em;
-    figcaption {
-      display: none;
+    h2 {
+      margin: 4rem 0 2rem 0;
+
+      &:after {
+        content: "";
+        height: 0.3rem;
+        width: 70%;
+        background: var(--primary-color);
+      }
     }
+  }
+  figcaption {
+    display: none;
   }
 
   .article-body-share {

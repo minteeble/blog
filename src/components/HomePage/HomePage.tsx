@@ -5,11 +5,13 @@ import { CardProps } from "../Card/Card.types";
 import Card from "../Card";
 import { PreviewProps } from "../Preview/Preview.types";
 import Preview from "../Preview";
+import { useParams } from "react-router";
 
 const HomePage = () => {
   const endpoint = "https://cms-blog-backend.minteeble.com/mintql";
 
   const cardNum = 3;
+  const { lang } = useParams();
 
   const [home, setHome] = useState<home>({
     data: {
@@ -22,7 +24,7 @@ const HomePage = () => {
   });
 
   const homeQuery = `{
-        posts {
+        posts(where: {language: ${lang!.toUpperCase()}}) {
           edges {
             node {
               excerpt(format: RENDERED)

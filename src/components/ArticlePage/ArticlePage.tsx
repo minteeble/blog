@@ -138,7 +138,7 @@ const ArticlePage = (props: ArticlePageProps) => {
   };
 
   const relatedQuery = `{
-    posts(where: {categoryName: "${topic}"}) {
+    posts(where: {categoryName: "${topic}",language: ${lang!.toUpperCase()}}) {
       edges {
         node {
           featuredImage {

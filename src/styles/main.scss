@@ -62,3 +62,11 @@ img {
   margin: 0 9%;
   position: relative;
 }
+
+.footer-copyright {
+  @extend .montserrat;
+}
+
+.footer-wrapper-privacy {
+  @extend .spaced;
+}

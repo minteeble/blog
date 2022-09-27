@@ -9,17 +9,18 @@ import BlogNav from "./components/BlogNav";
 const App = () => {
   return (
     <div className="app">
-      <div className="app-body">
-        <BrowserRouter>
-          <BlogNav />
+      <BrowserRouter>
+        <BlogNav />
+        <div className="app-body">
           <Routes>
             <Route path="/:lang/:topic/:title" element={<Article />}></Route>
             <Route path="/:lang/:topic" element={<Topic />}></Route>
-            <Route path="/" element={<Home />}></Route>
+            <Route path="/:lang" element={<Home />}></Route>
+            <Route path="/">{}</Route>
             <Route path="*" element={<Error />}></Route>
           </Routes>
-        </BrowserRouter>
-      </div>
+        </div>
+      </BrowserRouter>
       <Footer />
     </div>
   );
