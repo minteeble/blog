@@ -80,11 +80,20 @@
       height: 0.3rem;
     }
   }
+}
+.article-body-related {
+  width: 100%;
+  .article-body-related-title {
+    color: var(--light-text-color);
+    margin-bottom: 4rem;
+  }
 
-  .article-body-related {
-    .article-body-related-title {
-      color: var(--light-text-color);
-      margin-bottom: 4rem;
-    }
+  .article-body-related-wrapper {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 7rem;
   }
 }

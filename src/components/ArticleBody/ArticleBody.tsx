@@ -99,8 +99,10 @@ const ArticleBody = (props: ArticleBodyProps) => {
           </div>
           <span className="article-body-share-line"></span>
         </div>
-        <div className="article-body-related">
-          <h4 className="article-body-related-title spaced">related posts</h4>
+      </div>
+      <div className="article-body-related">
+        <h4 className="article-body-related-title spaced">related posts</h4>
+        <div className="article-body-related-wrapper">
           {props.related.map((x: RelatedProps, index: number) => {
             return (
               <Related
