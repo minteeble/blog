@@ -1,4 +1,4 @@
-export interface CardProps {
+export interface RelatedProps {
   imageLink: string;
   topic: string;
   title: string;

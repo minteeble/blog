@@ -1,5 +1,5 @@
-import Card from "./Card";
+import Related from "./Related";
 
-export default Card;
-export { Card };
-export * from "./Card.types";
+export default Related;
+export { Related };
+export * from "./Related.types";

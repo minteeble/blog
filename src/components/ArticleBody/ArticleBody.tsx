@@ -13,8 +13,8 @@ import {
   TelegramIcon,
   EmailIcon,
 } from "react-share";
-import { CardProps } from "../Card/Card.types";
-import Card from "../Card";
+import { RelatedProps } from "../Related/Related.types";
+import Related from "../Related";
 import NextPrev from "../NextPrev";
 
 const ArticleBody = (props: ArticleBodyProps) => {
@@ -101,9 +101,9 @@ const ArticleBody = (props: ArticleBodyProps) => {
         </div>
         <div className="article-body-related">
           <h4 className="article-body-related-title spaced">related posts</h4>
-          {props.related.map((x: CardProps, index: number) => {
+          {props.related.map((x: RelatedProps, index: number) => {
             return (
-              <Card
+              <Related
                 key={index}
                 imageLink={x.imageLink}
                 topic={x.topic}
