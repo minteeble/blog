@@ -5,6 +5,7 @@ import Topic from "./pages/Topic";
 import Error from "./pages/Error";
 import { Footer } from "@minteeble/ui-components";
 import BlogNav from "./components/BlogNav";
+import { Navigate } from "react-router-dom";
 
 const App = () => {
   return (
@@ -16,7 +17,10 @@ const App = () => {
             <Route path="/:lang/:topic/:title" element={<Article />}></Route>
             <Route path="/:lang/:topic" element={<Topic />}></Route>
             <Route path="/:lang" element={<Home />}></Route>
-            <Route path="/">{}</Route>
+            <Route
+              path="/"
+              element={<Navigate to={"/en"} replace={true} />}
+            ></Route>
             <Route path="*" element={<Error />}></Route>
           </Routes>
         </div>

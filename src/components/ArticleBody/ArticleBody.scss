@@ -29,11 +29,14 @@
     letter-spacing: 0.095em;
     h2 {
       margin: 4rem 0 2rem 0;
+      width: fit-content;
 
       &:after {
         content: "";
+        margin-top: 0.5rem;
+        display: block;
         height: 0.3rem;
-        width: 70%;
+        width: 10rem;
         background: var(--primary-color);
       }
     }
