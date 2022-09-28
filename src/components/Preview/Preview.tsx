@@ -5,7 +5,13 @@ const Preview = (props: PreviewProps) => {
   return (
     <>
       <div className="preview">
-        <img className="preview-img" src={props.imageLink} alt={props.title} />
+        <div className="preview-wrapper">
+          <img
+            className="preview-wrapper-img"
+            src={props.imageLink}
+            alt={props.title}
+          />
+        </div>
         <div className="preview-info">
           <h3 className="preview-info-topic spaced">{props.topic}</h3>
           <h2

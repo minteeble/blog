@@ -7,10 +7,19 @@
   margin-bottom: 5.6rem;
   overflow: hidden;
 
-  .preview-img {
-    max-width: 27.4rem;
-    max-height: 15.4rem;
+  .preview-wrapper {
+    min-width: 27.4rem;
+    width: 27.4rem;
+    height: 15.4rem;
     margin-right: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+    overflow: hidden;
+    .preview-wrapper-img {
+      width: 100%;
+    }
   }
 
   .preview-info {
