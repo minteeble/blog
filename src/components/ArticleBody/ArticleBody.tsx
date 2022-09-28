@@ -16,10 +16,12 @@ import {
 import { RelatedProps } from "../Related/Related.types";
 import Related from "../Related";
 import NextPrev from "../NextPrev";
+import Sidebar from "../Sidebar";
 
 const ArticleBody = (props: ArticleBodyProps) => {
   return (
     <>
+      <Sidebar article={true} id={props.id} />
       <div className="article-body">
         <h4 className="article-body-topic spaced">{props.topic}</h4>
         <h1

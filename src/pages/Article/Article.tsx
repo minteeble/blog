@@ -5,7 +5,6 @@ const Article = () => {
     <>
       <div className="article" style={{ position: "relative" }}>
         <ArticlePage />
-        <Sidebar />
       </div>
     </>
   );

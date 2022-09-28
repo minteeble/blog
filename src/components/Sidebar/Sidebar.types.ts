@@ -1,1 +1,4 @@
-export interface SidebarProps {}
+export interface SidebarProps {
+  article?: boolean;
+  id?: number;
+}
