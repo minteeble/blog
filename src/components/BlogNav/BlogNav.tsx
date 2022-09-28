@@ -25,6 +25,8 @@ const BlogNav = (props: BlogNavProps) => {
     }
   };
 
+  const { lang } = useParams();
+
   const endpoint = "https://cms-blog-backend.minteeble.com/mintql";
 
   const [res, setRes] = useState<nav>({
@@ -115,7 +117,7 @@ const BlogNav = (props: BlogNavProps) => {
           {
             content: (
               <>
-                <Link to={"/"}>
+                <Link to={`/${lang}`}>
                   <h3 className="kanit">home</h3>
                 </Link>
               </>
