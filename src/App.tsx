@@ -6,6 +6,7 @@ import Error from "./pages/Error";
 import { Footer } from "@minteeble/ui-components";
 import BlogNav from "./components/BlogNav";
 import { Navigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const App = () => {
   return (

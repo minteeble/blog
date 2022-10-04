@@ -33,6 +33,7 @@
     .sidebar-preview-info-title {
       font-weight: 600;
       display: inline;
+      color: var(--normal-text-color);
     }
 
     .sidebar-preview-info-content {
@@ -42,6 +43,7 @@
       font-size: 0.9rem;
       width: 100%;
       overflow: hidden;
+      color: var(--normal-text-color);
       p {
         text-overflow: ellipsis;
         line-height: 1.2rem;

@@ -1,4 +1,4 @@
 export interface CtaProps {
-  color: string;
+  inverted?: boolean;
   uri: string;
 }

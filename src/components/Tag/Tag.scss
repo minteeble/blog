@@ -16,6 +16,7 @@
       font-size: 1.25rem;
       white-space: nowrap;
       margin-right: 0.4rem;
+      color: var(--normal-text-color);
     }
 
     .tags-header-line {
@@ -29,6 +30,7 @@
   .tags-wrapper {
     display: flex;
     flex-wrap: wrap;
+    color: var(--normal-text-color);
     .tags-wrapper-item {
       font-size: 0.8rem;
       background: var(--primary-color);

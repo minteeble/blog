@@ -104,18 +104,24 @@ const ArticleBody = (props: ArticleBodyProps) => {
       </div>
       <div className="article-body-related">
         <h4 className="article-body-related-title spaced">related posts</h4>
-        <div className="article-body-related-wrapper">
-          {props.related.map((x: RelatedProps, index: number) => {
-            return (
-              <Related
-                key={index}
-                imageLink={x.imageLink}
-                topic={x.topic}
-                title={x.title}
-                uri={x.uri}
-              />
-            );
-          })}
+        <div className="article-body-related-wrapper montserrat">
+          {props.related.length > 0 ? (
+            props.related.map((x: RelatedProps, index: number) => {
+              return (
+                <Related
+                  key={index}
+                  imageLink={x.imageLink}
+                  topic={x.topic}
+                  title={x.title}
+                  uri={x.uri}
+                />
+              );
+            })
+          ) : (
+            <span className="article-body-related-wrapper-placeholder montserrat">
+              This article has no related articles
+            </span>
+          )}
         </div>
       </div>
     </>

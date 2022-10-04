@@ -7,6 +7,7 @@ import {
   MinteebleLogoSize,
   MinteebleLogoType,
   NavbarItemPosition,
+  MinteebleLogoTheme,
 } from "@minteeble/ui-components";
 import { Link, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -100,6 +101,11 @@ const BlogNav = (props: BlogNavProps) => {
   }
 
   const style = { "--link-num": navData.length } as React.CSSProperties;
+  const body = document.querySelector("body") as HTMLElement;
+
+  const theme = body.classList.contains("minteeble-dark-theme")
+    ? MinteebleLogoTheme.Dark
+    : MinteebleLogoTheme.Light;
 
   return (
     <>
@@ -110,6 +116,7 @@ const BlogNav = (props: BlogNavProps) => {
               <MinteebleLogo
                 type={MinteebleLogoType.Minimal}
                 size={MinteebleLogoSize.Medium}
+                theme={theme}
               />
             ),
             position: NavbarItemPosition.Left,

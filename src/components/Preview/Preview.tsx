@@ -22,7 +22,7 @@ const Preview = (props: PreviewProps) => {
             className="preview-info-content montserrat"
             dangerouslySetInnerHTML={{ __html: props.excerpt }}
           ></p>
-          <Cta color={"black"} uri={props.uri} />
+          <Cta uri={props.uri} />
         </div>
       </div>
     </>

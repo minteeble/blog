@@ -35,11 +35,13 @@
 
     .preview-info-title {
       margin-bottom: 1rem;
+      color: var(--normal-text-color);
     }
 
     .preview-info-content {
       text-align: justify;
       margin-bottom: auto;
+      color: var(--normal-text-color);
       p {
         display: none;
       }

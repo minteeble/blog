@@ -9,6 +9,7 @@
 
   .article-body-title {
     margin-bottom: 0.6rem;
+    color: var(--normal-text-color);
   }
 
   .article-body-date {
@@ -29,6 +30,7 @@
     line-height: 26px;
     letter-spacing: 0.095em;
     text-align: justify;
+    color: var(--normal-text-color);
     h2 {
       margin: 4rem 0 2rem 0;
       width: fit-content;
@@ -96,5 +98,10 @@
     justify-content: space-around;
     align-items: center;
     margin-bottom: 7rem;
+    color: var(--normal-text-color);
+    .article-body-related-wrapper-placeholder {
+      text-align: left;
+      width: 100%;
+    }
   }
 }

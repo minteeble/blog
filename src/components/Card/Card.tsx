@@ -13,7 +13,7 @@ const Card = (props: CardProps) => {
           className="card-title kanit"
           dangerouslySetInnerHTML={{ __html: props.title }}
         ></h2>
-        <Cta color={"white"} uri={props.uri}></Cta>
+        <Cta inverted={true} uri={props.uri}></Cta>
       </Link>
     </>
   );
