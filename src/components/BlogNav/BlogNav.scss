@@ -31,6 +31,10 @@
     .nav-topic-dropdown-list {
       list-style-type: none;
 
+      .nav-topic-dropdown-list-spinner {
+        width: 10rem;
+        margin: auto 0;
+      }
       .nav-topic-dropdown-list-item {
         margin: 0.8rem 0.8rem 1.4rem 0.8rem;
         width: fit-content;

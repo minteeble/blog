@@ -79,7 +79,7 @@ const ArticlePage = (props: ArticlePageProps) => {
       },
     }).then((result) => {
       if (result.data.data.post === null) {
-        navigate("/not-found");
+        navigate(`/${lang}/not-found`);
       }
       setRes(result);
     });

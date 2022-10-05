@@ -3,7 +3,14 @@ import Article from "./pages/Article";
 import Home from "./pages/Home";
 import Topic from "./pages/Topic";
 import Error from "./pages/Error";
-import { Footer } from "@minteeble/ui-components";
+import {
+  Footer,
+  LoadingSpinner,
+  MinteebleLogo,
+  MinteebleLogoSize,
+  MinteebleLogoTheme,
+  MinteebleLogoType,
+} from "@minteeble/ui-components";
 import BlogNav from "./components/BlogNav";
 import { Navigate } from "react-router-dom";
 import { useEffect } from "react";
@@ -22,7 +29,7 @@ const App = () => {
               path="/"
               element={<Navigate to={"/en"} replace={true} />}
             ></Route>
-            <Route path="*" element={<Error />}></Route>
+            <Route path="/:lang/not-found" element={<Error />}></Route>
           </Routes>
         </div>
       </BrowserRouter>

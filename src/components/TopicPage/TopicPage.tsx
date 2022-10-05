@@ -53,7 +53,7 @@ const TopicPage = () => {
       },
     }).then((result) => {
       if (result.data.data.posts.edges.length <= 0) {
-        navigate("/not-found");
+        navigate(`/${lang}/not-found`);
       }
       setRes(result);
     });

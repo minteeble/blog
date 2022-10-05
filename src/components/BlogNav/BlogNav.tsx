@@ -3,11 +3,13 @@ import { useEffect, useState } from "react";
 import Axios from "axios";
 import {
   Navbar,
+  LoadingSpinner,
   MinteebleLogo,
   MinteebleLogoSize,
   MinteebleLogoType,
   NavbarItemPosition,
   MinteebleLogoTheme,
+  LoadingSpinnerSize,
 } from "@minteeble/ui-components";
 import { Link, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -148,25 +150,37 @@ const BlogNav = (props: BlogNavProps) => {
                 </h3>
                 <div className="nav-topic-dropdown shadow-1">
                   <ul className="nav-topic-dropdown-list">
-                    {navData.map((x: navData, index: number) => {
-                      return (
-                        <li
-                          key={index}
-                          className="nav-topic-dropdown-list-item"
-                        >
-                          <Link
-                            onClick={() => {
-                              closeDropdown();
-                            }}
-                            className="nav-topic-dropdown-list-item-link"
-                            to={`/en/${x.slug}`}
+                    <li className="nav-topic-dropdown-list-spinner">
+                      <LoadingSpinner Size={LoadingSpinnerSize.Medium} />
+                    </li>
+                    {/* {navData.length > 0 ? (
+                      navData.map((x: navData, index: number) => {
+                        return (
+                          <li
+                            key={index}
+                            className="nav-topic-dropdown-list-item"
                           >
-                            {x.name}
-                          </Link>
-                          <span className="nav-topic-dropdown-list-item-line"></span>
-                        </li>
-                      );
-                    })}
+                            <Link
+                              onClick={() => {
+                                closeDropdown();
+                              }}
+                              className="nav-topic-dropdown-list-item-link"
+                              to={`/en/${x.slug}`}
+                            >
+                              {x.name}
+                            </Link>
+                            <span className="nav-topic-dropdown-list-item-line"></span>
+                          </li>
+                        );
+                      })
+                    ) : (
+                      <li>
+                        <LoadingSpinner
+                          className="nav-topic-dropdown-list-item-link"
+                          Size={LoadingSpinnerSize.Medium}
+                        />
+                      </li>
+                    )} */}
                   </ul>
                 </div>
               </div>
