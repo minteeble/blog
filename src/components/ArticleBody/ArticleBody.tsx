@@ -17,6 +17,7 @@ import { RelatedProps } from "../Related/Related.types";
 import Related from "../Related";
 import NextPrev from "../NextPrev";
 import Sidebar from "../Sidebar";
+import { LoadingSpinner, LoadingSpinnerSize } from "@minteeble/ui-components";
 
 const ArticleBody = (props: ArticleBodyProps) => {
   return (
@@ -29,11 +30,15 @@ const ArticleBody = (props: ArticleBodyProps) => {
           dangerouslySetInnerHTML={{ __html: props.title }}
         ></h1>
         <h5 className="article-body-date spaced">{props.date}</h5>
-        <img
-          className="article-body-featured"
-          src={props.guid}
-          alt={props.title}
-        />
+        {props.guid.length > 0 ? (
+          <img
+            className="article-body-featured"
+            src={props.guid}
+            alt={props.title}
+          />
+        ) : (
+          <LoadingSpinner Size={LoadingSpinnerSize.Large} />
+        )}
         <p
           className="article-body-content montserrat"
           dangerouslySetInnerHTML={{ __html: props.content }}

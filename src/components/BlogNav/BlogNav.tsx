@@ -150,10 +150,7 @@ const BlogNav = (props: BlogNavProps) => {
                 </h3>
                 <div className="nav-topic-dropdown shadow-1">
                   <ul className="nav-topic-dropdown-list">
-                    <li className="nav-topic-dropdown-list-spinner">
-                      <LoadingSpinner Size={LoadingSpinnerSize.Medium} />
-                    </li>
-                    {/* {navData.length > 0 ? (
+                    {navData.length > 0 ? (
                       navData.map((x: navData, index: number) => {
                         return (
                           <li
@@ -174,13 +171,10 @@ const BlogNav = (props: BlogNavProps) => {
                         );
                       })
                     ) : (
-                      <li>
-                        <LoadingSpinner
-                          className="nav-topic-dropdown-list-item-link"
-                          Size={LoadingSpinnerSize.Medium}
-                        />
+                      <li className="nav-topic-dropdown-list-spinner">
+                        <LoadingSpinner Size={LoadingSpinnerSize.Medium} />
                       </li>
-                    )} */}
+                    )}
                   </ul>
                 </div>
               </div>

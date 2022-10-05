@@ -127,13 +127,11 @@ const ArticlePage = (props: ArticlePageProps) => {
   let topicCheck = y.categories.edges[0]?.node.name ?? "Uncategorized";
 
   articleData = {
-    title: y.title || "-",
-    content: y.content || "-",
+    title: y.title || "",
+    content: y.content || "",
     topic: topicCheck,
-    date: y.date || "-",
-    guid:
-      (y.featuredImage && y.featuredImage.node.guid) ||
-      "https://cms-blog-backend.minteeble.com/wp-content/uploads/2022/09/Desktop-1.jpg",
+    date: y.date || "",
+    guid: (y.featuredImage && y.featuredImage.node.guid) || "",
     id: y.databaseId ?? "1",
   };
 
