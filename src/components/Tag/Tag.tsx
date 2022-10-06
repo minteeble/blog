@@ -1,9 +1,12 @@
+import { LoadingSpinner, LoadingSpinnerSize } from "@minteeble/ui-components";
 import Axios from "axios";
 import { useEffect, useState } from "react";
 import { TagProps } from "./Tag.types";
 
 const Tag = (props: TagProps) => {
   const endpoint = "https://cms-blog-backend.minteeble.com/mintql";
+
+  let check;
 
   const [res, setRes] = useState<tag>({
     data: {
@@ -30,6 +33,7 @@ const Tag = (props: TagProps) => {
       }`;
 
   useEffect(() => {
+    check = false;
     Axios({
       url: endpoint,
       method: "post",
@@ -38,6 +42,7 @@ const Tag = (props: TagProps) => {
       },
     }).then((result) => {
       setRes(result);
+      check = true;
     });
   }, [props.id]);
 
@@ -73,15 +78,21 @@ const Tag = (props: TagProps) => {
           <span className="tags-header-line"></span>
         </div>
         <div className="tags-wrapper montserrat">
-          {tags.length > 0
-            ? tags.map((x: string, index: number) => {
+          {check === true ? (
+            tags.length > 0 ? (
+              tags.map((x: string, index: number) => {
                 return (
                   <span key={index} className="tags-wrapper-item spaced">
                     {x}
                   </span>
                 );
               })
-            : "This article has no tags"}
+            ) : (
+              "This article has no tags"
+            )
+          ) : (
+            <LoadingSpinner Size={LoadingSpinnerSize.Small} />
+          )}
         </div>
       </div>
     </>

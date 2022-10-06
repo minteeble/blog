@@ -1,3 +1,4 @@
+import { LoadingSpinner, LoadingSpinnerSize } from "@minteeble/ui-components";
 import Cta from "../Cta";
 import { PreviewProps } from "./Preview.types";
 
@@ -6,11 +7,15 @@ const Preview = (props: PreviewProps) => {
     <>
       <div className="preview">
         <div className="preview-wrapper">
-          <img
-            className="preview-wrapper-img"
-            src={props.imageLink}
-            alt={props.title}
-          />
+          {props.imageLink.length > 0 ? (
+            <img
+              className="preview-wrapper-img"
+              src={props.imageLink}
+              alt={props.title}
+            />
+          ) : (
+            <LoadingSpinner Size={LoadingSpinnerSize.Medium} />
+          )}
         </div>
         <div className="preview-info">
           <h3 className="preview-info-topic spaced">{props.topic}</h3>

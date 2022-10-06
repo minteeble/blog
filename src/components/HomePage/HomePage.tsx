@@ -6,6 +6,7 @@ import Card from "../Card";
 import { PreviewProps } from "../Preview/Preview.types";
 import Preview from "../Preview";
 import { useParams } from "react-router";
+import { LoadingSpinner, LoadingSpinnerSize } from "@minteeble/ui-components";
 
 const HomePage = () => {
   const endpoint = "https://cms-blog-backend.minteeble.com/mintql";
@@ -120,20 +121,21 @@ const HomePage = () => {
   return (
     <>
       <div className="cards">
-        {Cards.map((x: CardProps, index: number) => {
-          return (
-            <Card
-              key={index}
-              imageLink={
-                Cards[index].imageLink ??
-                "https://cms-blog-backend.minteeble.com/wp-content/uploads/2022/09/Desktop-1.jpg"
-              }
-              topic={Cards[index].topic}
-              title={Cards[index].title}
-              uri={Cards[index].uri}
-            />
-          );
-        })}
+        {Cards.length > 0 ? (
+          Cards.map((x: CardProps, index: number) => {
+            return (
+              <Card
+                key={index}
+                imageLink={Cards[index].imageLink ?? ""}
+                topic={Cards[index].topic}
+                title={Cards[index].title}
+                uri={Cards[index].uri}
+              />
+            );
+          })
+        ) : (
+          <LoadingSpinner Size={LoadingSpinnerSize.Large} />
+        )}
       </div>
       <div className="home-body">
         <Sidebar />

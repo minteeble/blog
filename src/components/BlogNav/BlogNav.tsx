@@ -27,7 +27,6 @@ const BlogNav = (props: BlogNavProps) => {
       topic?.classList.remove("opened");
     }
   };
-
   const { lang } = useParams();
 
   const endpoint = "https://cms-blog-backend.minteeble.com/mintql";
@@ -108,6 +107,8 @@ const BlogNav = (props: BlogNavProps) => {
   const theme = body.classList.contains("minteeble-dark-theme")
     ? MinteebleLogoTheme.Dark
     : MinteebleLogoTheme.Light;
+
+  console.log(lang);
 
   return (
     <>

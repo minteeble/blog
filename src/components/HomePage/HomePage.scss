@@ -1,8 +1,9 @@
 .cards {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  height: 20.6rem;
+  justify-content: center;
+  background: var(--border-color);
+  height: 35rem;
 }
 
 .home-body {
