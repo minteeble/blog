@@ -31,7 +31,8 @@
     "dev-server": "encore dev-server",
     "dev": "encore dev",
     "watch": "encore dev --watch",
-    "build": "encore production --progress"
+    "build": "encore production --progress",
+    "gen-sitemap": "node sitemapGenerator.js"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.1.0",
@@ -55,6 +56,7 @@
     "react-router-dom": "6",
     "react-router-hash-link": "^2.4.3",
     "react-share": "^4.4.0",
-    "styled-components": "^5.3.3"
+    "styled-components": "^5.3.3",
+    "xml-formatter": "^2.6.1"
   }
 }
