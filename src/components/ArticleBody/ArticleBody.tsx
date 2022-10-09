@@ -18,31 +18,49 @@ import Related from "../Related";
 import NextPrev from "../NextPrev";
 import Sidebar from "../Sidebar";
 import { LoadingSpinner, LoadingSpinnerSize } from "@minteeble/ui-components";
+import { useState } from "react";
 
 const ArticleBody = (props: ArticleBodyProps) => {
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
   return (
     <>
       <Sidebar article={true} id={props.id} />
       <div className="article-body">
-        <h4 className="article-body-topic spaced">{props.topic}</h4>
-        <h1
-          className="article-body-title kanit"
-          dangerouslySetInnerHTML={{ __html: props.title }}
-        ></h1>
-        <h5 className="article-body-date spaced">{props.date}</h5>
-        {props.guid.length > 0 ? (
-          <img
-            className="article-body-featured"
-            src={props.guid}
-            alt={props.title}
-          />
+        {props.title.length > 0 ? (
+          <>
+            <h4 className="article-body-topic spaced">{props.topic}</h4>
+            <h1
+              className="article-body-title kanit"
+              dangerouslySetInnerHTML={{ __html: props.title }}
+            ></h1>
+            <h5 className="article-body-date spaced">{props.date}</h5>
+
+            <img
+              onLoad={() => {
+                setIsLoaded(true);
+              }}
+              className="article-body-featured"
+              src={props.guid}
+              alt={props.title}
+              style={{ display: isLoaded ? "block" : "none" }}
+            />
+
+            {!isLoaded && (
+              <span className="img-spinner">
+                <LoadingSpinner Size={LoadingSpinnerSize.Medium} />
+              </span>
+            )}
+
+            <p
+              className="article-body-content montserrat"
+              dangerouslySetInnerHTML={{ __html: props.content }}
+            ></p>
+          </>
         ) : (
-          <LoadingSpinner Size={LoadingSpinnerSize.Large} />
+          <span className="main-spinner">
+            <LoadingSpinner Size={LoadingSpinnerSize.Large} />
+          </span>
         )}
-        <p
-          className="article-body-content montserrat"
-          dangerouslySetInnerHTML={{ __html: props.content }}
-        ></p>
         <NextPrev id={props.id} />
         <div className="article-body-share">
           <h4 className="article-body-share-title spaced">share this post</h4>

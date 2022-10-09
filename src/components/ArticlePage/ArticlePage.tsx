@@ -131,7 +131,9 @@ const ArticlePage = (props: ArticlePageProps) => {
     content: y.content || "",
     topic: topicCheck,
     date: y.date || "",
-    guid: (y.featuredImage && y.featuredImage.node.guid) || "",
+    guid:
+      (y.featuredImage && y.featuredImage.node.guid) ||
+      "https://cms-blog-backend.minteeble.com/wp-content/uploads/2022/09/Desktop-1.jpg",
     id: y.databaseId ?? "1",
   };
 

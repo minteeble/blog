@@ -41,6 +41,8 @@ const BlogNav = (props: BlogNavProps) => {
     },
   });
 
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
+
   const navQuery = `{
         categories {
           edges {
@@ -61,10 +63,9 @@ const BlogNav = (props: BlogNavProps) => {
       },
     }).then((result) => {
       setRes(result);
+      setIsLoaded(true);
     });
   }, []);
-
-  console.log(res.data.data.categories);
 
   interface nav {
     data: {
@@ -151,7 +152,7 @@ const BlogNav = (props: BlogNavProps) => {
                 </h3>
                 <div className="nav-topic-dropdown shadow-1">
                   <ul className="nav-topic-dropdown-list">
-                    {navData.length > 0 ? (
+                    {isLoaded ? (
                       navData.map((x: navData, index: number) => {
                         return (
                           <li

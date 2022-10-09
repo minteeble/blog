@@ -8,6 +8,11 @@
 
 .home-body {
   position: relative;
-  margin-top: 15rem;
-  min-height: 100vh;
+  margin-top: 8rem;
+  min-height: 150vh;
+
+  .loading-spinner {
+    width: 75%;
+    height: 20rem;
+  }
 }

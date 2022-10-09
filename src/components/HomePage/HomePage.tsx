@@ -14,6 +14,7 @@ const HomePage = () => {
   const cardNum = 3;
   const { lang } = useParams();
 
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const [home, setHome] = useState<home>({
     data: {
       data: {
@@ -55,6 +56,7 @@ const HomePage = () => {
       },
     }).then((result) => {
       setHome(result);
+      setIsLoaded(true);
     });
   }, []);
 
@@ -139,18 +141,22 @@ const HomePage = () => {
       </div>
       <div className="home-body">
         <Sidebar />
-        {Previews.map((x: PreviewProps, index: number) => {
-          return (
-            <Preview
-              key={index}
-              imageLink={Previews[index].imageLink}
-              topic={Previews[index].topic}
-              title={Previews[index].title}
-              uri={Previews[index].uri}
-              excerpt={Previews[index].excerpt}
-            />
-          );
-        })}
+        {isLoaded ? (
+          Previews.map((x: PreviewProps, index: number) => {
+            return (
+              <Preview
+                key={index}
+                imageLink={Previews[index].imageLink}
+                topic={Previews[index].topic}
+                title={Previews[index].title}
+                uri={Previews[index].uri}
+                excerpt={Previews[index].excerpt}
+              />
+            );
+          })
+        ) : (
+          <LoadingSpinner Size={LoadingSpinnerSize.Large} />
+        )}
       </div>
     </>
   );

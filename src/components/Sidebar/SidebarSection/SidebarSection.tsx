@@ -1,5 +1,6 @@
 import { SidebarSectionProps } from "./SidebarSection.types";
 import SidebarPreview from "../SidebarPreview/SidebarPreview";
+import { LoadingSpinner, LoadingSpinnerSize } from "@minteeble/ui-components";
 
 const SidebarSection = (props: SidebarSectionProps) => {
   let data = props.data;
@@ -15,17 +16,24 @@ const SidebarSection = (props: SidebarSectionProps) => {
           <span className="sidebar-section-header-line"></span>
         </div>
         <div className="sidebar-section-body">
-          {data.map((x: any, index: number) => {
-            return (
-              <SidebarPreview
-                key={index}
-                imageLink={data[index].imageLink}
-                title={data[index].title}
-                excerpt={data[index].excerpt}
-                uri={data[index].uri}
-              />
-            );
-          })}
+          {data.length > 0 ? (
+            data.map((x: any, index: number) => {
+              return (
+                <SidebarPreview
+                  key={index}
+                  imageLink={data[index].imageLink}
+                  title={data[index].title}
+                  excerpt={data[index].excerpt}
+                  uri={data[index].uri}
+                />
+              );
+            })
+          ) : (
+            <LoadingSpinner
+              className="sidebar-section-spinner"
+              Size={LoadingSpinnerSize.Medium}
+            />
+          )}
         </div>
       </div>
     </>

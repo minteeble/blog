@@ -1,21 +1,26 @@
 import { LoadingSpinner, LoadingSpinnerSize } from "@minteeble/ui-components";
+import { useState } from "react";
 import Cta from "../Cta";
 import { PreviewProps } from "./Preview.types";
 
 const Preview = (props: PreviewProps) => {
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
+
   return (
     <>
       <div className="preview">
         <div className="preview-wrapper">
-          {props.imageLink.length > 0 ? (
-            <img
-              className="preview-wrapper-img"
-              src={props.imageLink}
-              alt={props.title}
-            />
-          ) : (
-            <LoadingSpinner Size={LoadingSpinnerSize.Medium} />
-          )}
+          <img
+            onLoad={() => {
+              setIsLoaded(true);
+            }}
+            className="preview-wrapper-img"
+            src={props.imageLink}
+            alt={props.title}
+            style={{ display: isLoaded ? "block" : "none" }}
+          />
+
+          {!isLoaded && <LoadingSpinner Size={LoadingSpinnerSize.Medium} />}
         </div>
         <div className="preview-info">
           <h3 className="preview-info-topic spaced">{props.topic}</h3>

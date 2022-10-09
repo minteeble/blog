@@ -6,8 +6,7 @@ import { TagProps } from "./Tag.types";
 const Tag = (props: TagProps) => {
   const endpoint = "https://cms-blog-backend.minteeble.com/mintql";
 
-  let check;
-
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const [res, setRes] = useState<tag>({
     data: {
       data: {
@@ -33,7 +32,6 @@ const Tag = (props: TagProps) => {
       }`;
 
   useEffect(() => {
-    check = false;
     Axios({
       url: endpoint,
       method: "post",
@@ -42,7 +40,7 @@ const Tag = (props: TagProps) => {
       },
     }).then((result) => {
       setRes(result);
-      check = true;
+      setIsLoaded(true);
     });
   }, [props.id]);
 
@@ -78,7 +76,7 @@ const Tag = (props: TagProps) => {
           <span className="tags-header-line"></span>
         </div>
         <div className="tags-wrapper montserrat">
-          {check === true ? (
+          {isLoaded ? (
             tags.length > 0 ? (
               tags.map((x: string, index: number) => {
                 return (
