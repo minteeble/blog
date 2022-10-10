@@ -30,6 +30,7 @@ const App = () => {
               element={<Navigate to={"/en"} replace={true} />}
             ></Route>
             <Route path="/:lang/not-found" element={<Error />}></Route>
+            <Route path="*" element={<Error />}></Route>
           </Routes>
         </div>
       </BrowserRouter>

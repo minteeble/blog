@@ -65,7 +65,7 @@ const BlogNav = (props: BlogNavProps) => {
       setRes(result);
       setIsLoaded(true);
     });
-  }, []);
+  }, [lang]);
 
   interface nav {
     data: {
@@ -128,7 +128,7 @@ const BlogNav = (props: BlogNavProps) => {
           {
             content: (
               <>
-                <Link to={`/${lang}`}>
+                <Link to={`/${lang || "en"}`}>
                   <h3 className="kanit">home</h3>
                 </Link>
               </>

@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Cta from "../Cta";
 import { CardProps } from "./Card.types";

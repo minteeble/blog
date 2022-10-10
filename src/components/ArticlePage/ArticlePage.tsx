@@ -79,7 +79,7 @@ const ArticlePage = (props: ArticlePageProps) => {
       },
     }).then((result) => {
       if (result.data.data.post === null) {
-        navigate(`/${lang}/not-found`);
+        navigate(`/${lang || "en"}/not-found`);
       }
       setRes(result);
     });

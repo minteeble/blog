@@ -2,10 +2,14 @@ import { useEffect, useState } from "react";
 import Axios from "axios";
 import { useNavigate, useParams } from "react-router";
 import { Preview, PreviewProps } from "../Preview";
+import { LoadingSpinner, LoadingSpinnerSize } from "@minteeble/ui-components";
+import Sidebar from "../Sidebar";
 
 const TopicPage = () => {
   const endpoint = "https://cms-blog-backend.minteeble.com/mintql";
   const navigate = useNavigate();
+
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
   const [res, setRes] = useState<articleData>({
     data: {
@@ -53,9 +57,10 @@ const TopicPage = () => {
       },
     }).then((result) => {
       if (result.data.data.posts.edges.length <= 0) {
-        navigate(`/${lang}/not-found`);
+        navigate(`/${lang || "en"}/not-found`);
       }
       setRes(result);
+      setIsLoaded(true);
     });
   }, [topic, lang]);
 
@@ -109,19 +114,27 @@ const TopicPage = () => {
   return (
     <>
       <div className="topic-body">
-        <h1 className="topic-body-title kanit">Articles of category {topic}</h1>
-        {previewData.map((x: PreviewProps, index: number) => {
-          return (
-            <Preview
-              key={index}
-              imageLink={x.imageLink}
-              topic={x.topic}
-              title={x.title}
-              excerpt={x.excerpt}
-              uri={x.uri}
-            />
-          );
-        })}
+        {isLoaded ? (
+          <>
+            <h1 className="topic-body-title kanit">
+              Articles of category {topic}
+            </h1>
+            {previewData.map((x: PreviewProps, index: number) => {
+              return (
+                <Preview
+                  key={index}
+                  imageLink={x.imageLink}
+                  topic={x.topic}
+                  title={x.title}
+                  excerpt={x.excerpt}
+                  uri={x.uri}
+                />
+              );
+            })}
+          </>
+        ) : (
+          <LoadingSpinner Size={LoadingSpinnerSize.Large} />
+        )}
       </div>
     </>
   );

@@ -1,9 +1,16 @@
 .topic-body {
+  min-height: 150vh;
   .topic-body-title {
     margin: 0.1rem 0 4rem 0;
     font-style: normal;
     font-weight: 500;
     font-size: 40px;
     line-height: 136.5%;
+    color: var(--normal-text-color);
+  }
+
+  .loading-spinner {
+    width: 65%;
+    padding-top: 6rem;
   }
 }
