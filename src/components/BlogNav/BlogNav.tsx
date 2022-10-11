@@ -13,9 +13,11 @@ import {
 } from "@minteeble/ui-components";
 import { Link, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import { faCaretDown, faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 
 const BlogNav = (props: BlogNavProps) => {
+  const [dark, useDark] = useState<boolean>(false);
+
   const openDropdown = () => {
     const topic = document.querySelector(".nav-topic");
     topic?.classList.toggle("opened");
@@ -23,10 +25,30 @@ const BlogNav = (props: BlogNavProps) => {
 
   const closeDropdown = () => {
     const topic = document.querySelector(".nav-topic");
-    if (topic?.classList.contains("opened")) {
-      topic?.classList.remove("opened");
+    if (topic!.classList.contains("opened")) {
+      topic!.classList.remove("opened");
     }
   };
+
+  const handleTheme = () => {
+    const trigger = document.querySelector(".nav-theme-trigger");
+    trigger!.classList.toggle("active");
+
+    const body = document.querySelector("body");
+
+    if (body!.classList.contains("minteeble-default-theme")) {
+      body!.classList.remove("minteeble-default-theme");
+      body!.classList.add("minteeble-dark-theme");
+    } else {
+      if (body!.classList.contains("minteeble-dark-theme")) {
+        body!.classList.remove("minteeble-dark-theme");
+        body!.classList.add("minteeble-default-theme");
+      }
+    }
+
+    useDark(!dark);
+  };
+
   const { lang } = useParams();
 
   const endpoint = "https://cms-blog-backend.minteeble.com/mintql";
@@ -105,9 +127,7 @@ const BlogNav = (props: BlogNavProps) => {
   const style = { "--link-num": navData.length } as React.CSSProperties;
   const body = document.querySelector("body") as HTMLElement;
 
-  const theme = body.classList.contains("minteeble-dark-theme")
-    ? MinteebleLogoTheme.Dark
-    : MinteebleLogoTheme.Light;
+  const theme = dark ? MinteebleLogoTheme.Dark : MinteebleLogoTheme.Light;
 
   console.log(lang);
 
@@ -182,6 +202,23 @@ const BlogNav = (props: BlogNavProps) => {
               </div>
             ),
             position: NavbarItemPosition.Left,
+          },
+          {
+            content: (
+              <>
+                <div
+                  className="nav-theme-path"
+                  onClick={() => {
+                    handleTheme();
+                  }}
+                >
+                  <div className="nav-theme-trigger">
+                    <FontAwesomeIcon icon={dark ? faMoon : faSun} />
+                  </div>
+                </div>
+              </>
+            ),
+            position: NavbarItemPosition.Right,
           },
         ]}
       />

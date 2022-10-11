@@ -68,3 +68,29 @@
     height: calc(4rem * var(--link-num));
   }
 }
+
+.nav-theme-path {
+  background: var(--normal-text-color);
+  height: 1.4rem;
+  width: 2.8rem;
+  border-radius: 1rem;
+  cursor: pointer;
+
+  .nav-theme-trigger {
+    background: var(--border-color);
+    height: 1.2rem;
+    width: 1.2rem;
+    border-radius: 1rem;
+    margin: 0.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    transition: all 0.2s ease-in-out;
+    color: var(--normal-text-color);
+  }
+
+  .nav-theme-trigger.active {
+    margin-left: calc(100% - 1.3rem);
+  }
+}
