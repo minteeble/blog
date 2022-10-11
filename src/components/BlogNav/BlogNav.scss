@@ -94,3 +94,16 @@
     margin-left: calc(100% - 1.3rem);
   }
 }
+
+.nav-lang {
+  margin-right: 1rem;
+  .nav-lang-btn {
+    border: solid 0.2rem var(--primary-color);
+    color: var(--primary-color);
+    background: none;
+    border-radius: 0.5rem;
+    padding: 0.2rem 0.5rem;
+    cursor: pointer;
+    font-weight: bold;
+  }
+}

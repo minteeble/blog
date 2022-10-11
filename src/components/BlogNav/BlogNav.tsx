@@ -17,6 +17,7 @@ import { faCaretDown, faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 
 const BlogNav = (props: BlogNavProps) => {
   const [dark, useDark] = useState<boolean>(false);
+  const [language, setLanguage] = useState<string>("en");
 
   const openDropdown = () => {
     const topic = document.querySelector(".nav-topic");
@@ -50,6 +51,10 @@ const BlogNav = (props: BlogNavProps) => {
   };
 
   const { lang } = useParams();
+
+  useEffect(() => {
+    setLanguage(lang || "en");
+  }, [lang, language]);
 
   const endpoint = "https://cms-blog-backend.minteeble.com/mintql";
 
@@ -125,11 +130,8 @@ const BlogNav = (props: BlogNavProps) => {
   }
 
   const style = { "--link-num": navData.length } as React.CSSProperties;
-  const body = document.querySelector("body") as HTMLElement;
 
   const theme = dark ? MinteebleLogoTheme.Dark : MinteebleLogoTheme.Light;
-
-  console.log(lang);
 
   return (
     <>
@@ -148,7 +150,7 @@ const BlogNav = (props: BlogNavProps) => {
           {
             content: (
               <>
-                <Link to={`/${lang || "en"}`}>
+                <Link to={`/${language}`}>
                   <h3 className="kanit">home</h3>
                 </Link>
               </>
@@ -202,6 +204,19 @@ const BlogNav = (props: BlogNavProps) => {
               </div>
             ),
             position: NavbarItemPosition.Left,
+          },
+          {
+            content: (
+              <Link
+                className="nav-lang"
+                to={`/${language === "en" ? "it" : language}`}
+              >
+                <button className="nav-lang-btn spaced">
+                  {language === "en" ? "it" : language}
+                </button>
+              </Link>
+            ),
+            position: NavbarItemPosition.Right,
           },
           {
             content: (
