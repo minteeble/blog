@@ -11,9 +11,10 @@ import {
   MinteebleLogoTheme,
   LoadingSpinnerSize,
 } from "@minteeble/ui-components";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
+import { matchPath } from "react-router";
 
 const BlogNav = (props: BlogNavProps) => {
   const [dark, useDark] = useState<boolean>(false);
@@ -51,9 +52,18 @@ const BlogNav = (props: BlogNavProps) => {
   };
 
   const { lang } = useParams();
+  let location = useLocation();
+
+  useEffect(() => {
+    console.log("Location:", location);
+    let params = matchPath({ path: "/:lang/*" }, location.pathname);
+    console.log("Params", params);
+    console.log("Language", params && params.params.lang);
+  }, [location]);
 
   useEffect(() => {
     setLanguage(lang || "en");
+    console.log("Lang: ", lang);
   }, [lang, language]);
 
   const endpoint = "https://cms-blog-backend.minteeble.com/mintql";
