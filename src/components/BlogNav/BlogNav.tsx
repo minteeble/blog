@@ -18,7 +18,7 @@ import { matchPath } from "react-router";
 
 const BlogNav = (props: BlogNavProps) => {
   const [dark, useDark] = useState<boolean>(false);
-  const [language, setLanguage] = useState<string>("en");
+  const [lang, setLang] = useState<string>("en");
 
   const openDropdown = () => {
     const topic = document.querySelector(".nav-topic");
@@ -51,20 +51,12 @@ const BlogNav = (props: BlogNavProps) => {
     useDark(!dark);
   };
 
-  const { lang } = useParams();
   let location = useLocation();
 
   useEffect(() => {
-    console.log("Location:", location);
     let params = matchPath({ path: "/:lang/*" }, location.pathname);
-    console.log("Params", params);
-    console.log("Language", params && params.params.lang);
+    if (params) setLang(params!.params.lang || "en");
   }, [location]);
-
-  useEffect(() => {
-    setLanguage(lang || "en");
-    console.log("Lang: ", lang);
-  }, [lang, language]);
 
   const endpoint = "https://cms-blog-backend.minteeble.com/mintql";
 
@@ -102,7 +94,7 @@ const BlogNav = (props: BlogNavProps) => {
       setRes(result);
       setIsLoaded(true);
     });
-  }, [lang]);
+  }, []);
 
   interface nav {
     data: {
@@ -160,7 +152,7 @@ const BlogNav = (props: BlogNavProps) => {
           {
             content: (
               <>
-                <Link to={`/${language}`}>
+                <Link to={`/${lang}`}>
                   <h3 className="kanit">home</h3>
                 </Link>
               </>
@@ -217,14 +209,11 @@ const BlogNav = (props: BlogNavProps) => {
           },
           {
             content: (
-              <Link
-                className="nav-lang"
-                to={`/${language === "en" ? "it" : language}`}
-              >
+              <a className="nav-lang" href={`/${lang === "en" ? "it" : "en"}`}>
                 <button className="nav-lang-btn spaced">
-                  {language === "en" ? "it" : language}
+                  {lang === "en" ? "it" : "en"}
                 </button>
-              </Link>
+              </a>
             ),
             position: NavbarItemPosition.Right,
           },
