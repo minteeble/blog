@@ -4,6 +4,8 @@ import { useNavigate, useParams } from "react-router";
 import { ArticlePageProps } from "./ArticlePage.types";
 import { ArticleBody } from "../ArticleBody";
 import { CardProps } from "../Card/Card.types";
+// @ts-ignore
+import MetaTags from "react-meta-tags";
 
 const ArticlePage = (props: ArticlePageProps) => {
   const navigate = useNavigate();
@@ -221,6 +223,12 @@ const ArticlePage = (props: ArticlePageProps) => {
 
   return (
     <>
+      <MetaTags>
+        <title>Page 1</title>
+        <meta name="description" content="Some description." />
+        <meta property="og:title" content="MyApp" />
+        <meta property="og:image" content="path/to/image.jpg" />
+      </MetaTags>
       <ArticleBody
         id={articleData.id}
         title={articleData.title}
