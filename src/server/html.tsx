@@ -1,5 +1,5 @@
 import { Config } from "./config";
-import { Stats } from "./types";
+import { MetaInfo, Stats } from "./types";
 
 /**
  * This HTML file acts as a template that we insert all our generated
@@ -7,17 +7,20 @@ import { Stats } from "./types";
  * Note we're returning a template string from this function.
  */
 const html = ({
+  meta,
   stats,
   content,
   config,
   css = "",
 }: {
+  meta: MetaInfo;
   stats: Stats;
   content: string;
   config: Config;
   css?: string;
 }): string => {
   console.log("Settings: ", config);
+  console.log("CO");
 
   return `<!DOCTYPE html>
   <html lang="en">
@@ -25,7 +28,8 @@ const html = ({
       <meta charset="utf-8" />
       <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
       <meta name="theme-color" content="${config.app.THEME_COLOR}" />
-      <title>${config.app.TITLE}</title>
+      <title>${meta.title}</title>
+      <meta name="description" content="${meta.description}">
       <link rel="manifest" href="${config.app.PUBLIC_URL}/manifest.json" />
       <link rel="shortcut icon" href="${config.app.PUBLIC_URL}/favicon.ico" />
       ${stats.styles
