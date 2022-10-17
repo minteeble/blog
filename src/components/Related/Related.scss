@@ -1,0 +1,30 @@
+.related {
+  height: 20.6rem;
+  width: 20.6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  color: white;
+  padding: 1rem;
+  background: linear-gradient(
+      180deg,
+      rgba(1, 1, 1, 0.06) 0%,
+      rgba(0, 0, 0, 0.6) 100%
+    ),
+    var(--img);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto 100%;
+  border-radius: 1rem;
+  margin-bottom: 3.5rem;
+
+  .related-topic {
+    margin-bottom: 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  .related-title {
+    margin-bottom: 2rem;
+  }
+}

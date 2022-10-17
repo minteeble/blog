@@ -6,6 +6,14 @@ import * as React from "react";
 import { Route, Routes } from "react-router-dom";
 
 import useConfig from "./components/useConfig";
+import Article from "./pages/Article";
+import Topic from "./pages/Topic";
+import Home from "./pages/Home";
+import Error from "./pages/Error";
+/** @ts-ignore */
+import { Navigate } from "react-router-dom";
+import BlogNav from "./components/BlogNav";
+import { Footer } from "@minteeble/ui-components";
 
 export const Test = () => {
   return <div className="ciao">Ciao2</div>;
@@ -18,26 +26,28 @@ export default function App() {
   const config = useConfig();
   return (
     <div className="app">
-      {/* <BlogNav /> */}
+      <BlogNav />
       <div className="app-body">
         {/** @ts-ignore */}
         <Routes>
           {/** @ts-ignore */}
           <Route path={"/ciao"} element={<Test />}></Route>
-          {/** @ts-ignore */}
-        </Routes>
-        {/* <Route path="/:lang/:topic/:title" element={<Article />}></Route>
 
-            <Route path="/:lang/:topic" element={<Topic />}></Route>
-            <Route path="/:lang" element={<Home />}></Route>
-            <Route
-              path="/"
-              element={<Navigate to={"/en"} replace={true} />}
-            ></Route>
-            <Route path="/:lang/not-found" element={<Error />}></Route>
-            <Route path="*" element={<Error />}></Route> */}
+          {/** @ts-ignore */}
+          <Route path="/:lang/:topic/:title" element={<Article />}></Route>
+          {/** @ts-ignore */}
+          <Route path="/:lang/:topic" element={<Topic />}></Route>
+          {/** @ts-ignore */}
+          <Route path="/:lang" element={<Home />}></Route>
+          {/** @ts-ignore */}
+          <Route path="/" element={<Navigate to={"/en"} replace={true} />}></Route>
+          {/** @ts-ignore */}
+          <Route path="/:lang/not-found" element={<Error />}></Route>
+          {/** @ts-ignore */}
+          <Route path="*" element={<Error />}></Route>
+        </Routes>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }

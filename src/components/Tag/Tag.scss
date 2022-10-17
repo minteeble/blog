@@ -1,0 +1,50 @@
+.tags {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 1.3rem;
+
+  .tags-header {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    margin-bottom: 1.5rem;
+
+    .tags-header-title {
+      font-weight: 600;
+      font-size: 1.25rem;
+      white-space: nowrap;
+      margin-right: 0.4rem;
+      color: var(--normal-text-color);
+    }
+
+    .tags-header-line {
+      width: 100%;
+      background: var(--primary-color);
+      height: 0.3rem;
+      margin: auto 0;
+    }
+  }
+
+  .tags-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    color: var(--normal-text-color);
+    width: 100%;
+    .tags-wrapper-item {
+      font-size: 0.8rem;
+      background: var(--primary-color);
+      border-radius: 0.5rem;
+      padding: 0.2rem 0.4rem;
+      color: white;
+      margin-right: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .loading-spinner {
+      width: 100%;
+      height: 5rem;
+    }
+  }
+}
