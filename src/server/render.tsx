@@ -10,6 +10,7 @@ import ConfigContext from "../components/ConfigContext";
 import config from "./config";
 import html from "./html";
 import { Stats } from "./types";
+//@ts-ignore
 import { StaticRouter } from "react-router-dom/server";
 
 /**
