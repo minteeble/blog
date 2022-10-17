@@ -2,7 +2,8 @@
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 
-import "./index.css";
+// import "./index.css";
+import "../styles/main.scss";
 
 /**
  * Frontend code running in browser

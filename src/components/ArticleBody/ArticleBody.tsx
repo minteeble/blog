@@ -6,19 +6,14 @@ import {
   TelegramShareButton,
   EmailShareButton,
 } from "react-share";
-import {
-  FacebookIcon,
-  WhatsappIcon,
-  TwitterIcon,
-  TelegramIcon,
-  EmailIcon,
-} from "react-share";
+import { FacebookIcon, WhatsappIcon, TwitterIcon, TelegramIcon, EmailIcon } from "react-share";
 import { RelatedProps } from "../Related/Related.types";
 import Related from "../Related";
 import NextPrev from "../NextPrev";
 import Sidebar from "../Sidebar";
 import { LoadingSpinner, LoadingSpinnerSize } from "@minteeble/ui-components";
 import { useState } from "react";
+import * as React from "react";
 
 const ArticleBody = (props: ArticleBodyProps) => {
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
@@ -29,10 +24,7 @@ const ArticleBody = (props: ArticleBodyProps) => {
         {props.title.length > 0 ? (
           <>
             <h4 className="article-body-topic spaced">{props.topic}</h4>
-            <h1
-              className="article-body-title kanit"
-              dangerouslySetInnerHTML={{ __html: props.title }}
-            ></h1>
+            <h1 className="article-body-title kanit" dangerouslySetInnerHTML={{ __html: props.title }}></h1>
             <h5 className="article-body-date spaced">{props.date}</h5>
 
             <img
@@ -51,10 +43,7 @@ const ArticleBody = (props: ArticleBodyProps) => {
               </span>
             )}
 
-            <p
-              className="article-body-content montserrat"
-              dangerouslySetInnerHTML={{ __html: props.content }}
-            ></p>
+            <p className="article-body-content montserrat" dangerouslySetInnerHTML={{ __html: props.content }}></p>
           </>
         ) : (
           <span className="main-spinner">
@@ -65,10 +54,7 @@ const ArticleBody = (props: ArticleBodyProps) => {
         <div className="article-body-share">
           <h4 className="article-body-share-title spaced">share this post</h4>
           <div className="article-body-share-social">
-            <WhatsappShareButton
-              className="article-body-share-social-item"
-              url={window.location.href}
-            >
+            <WhatsappShareButton className="article-body-share-social-item" url={window.location.href}>
               <WhatsappIcon
                 round={true}
                 bgStyle={{ display: "none" }}
@@ -88,10 +74,7 @@ const ArticleBody = (props: ArticleBodyProps) => {
                 size={60}
               ></FacebookIcon>
             </FacebookShareButton>
-            <TelegramShareButton
-              className="article-body-share-social-item"
-              url={window.location.href}
-            >
+            <TelegramShareButton className="article-body-share-social-item" url={window.location.href}>
               <TelegramIcon
                 round={true}
                 bgStyle={{ display: "none" }}
@@ -99,27 +82,11 @@ const ArticleBody = (props: ArticleBodyProps) => {
                 size={45}
               ></TelegramIcon>
             </TelegramShareButton>
-            <TwitterShareButton
-              className="article-body-share-social-item"
-              url={window.location.href}
-            >
-              <TwitterIcon
-                round={true}
-                bgStyle={{ display: "none" }}
-                iconFillColor={"#1DA1F2"}
-                size={60}
-              ></TwitterIcon>
+            <TwitterShareButton className="article-body-share-social-item" url={window.location.href}>
+              <TwitterIcon round={true} bgStyle={{ display: "none" }} iconFillColor={"#1DA1F2"} size={60}></TwitterIcon>
             </TwitterShareButton>
-            <EmailShareButton
-              className="article-body-share-social-item"
-              url={window.location.href}
-            >
-              <EmailIcon
-                round={true}
-                bgStyle={{ display: "none" }}
-                iconFillColor={"#ff4c4c"}
-                size={60}
-              ></EmailIcon>
+            <EmailShareButton className="article-body-share-social-item" url={window.location.href}>
+              <EmailIcon round={true} bgStyle={{ display: "none" }} iconFillColor={"#ff4c4c"} size={60}></EmailIcon>
             </EmailShareButton>
           </div>
           <span className="article-body-share-line"></span>
@@ -130,15 +97,7 @@ const ArticleBody = (props: ArticleBodyProps) => {
         <div className="article-body-related-wrapper montserrat">
           {props.related.length > 0 ? (
             props.related.map((x: RelatedProps, index: number) => {
-              return (
-                <Related
-                  key={index}
-                  imageLink={x.imageLink}
-                  topic={x.topic}
-                  title={x.title}
-                  uri={x.uri}
-                />
-              );
+              return <Related key={index} imageLink={x.imageLink} topic={x.topic} title={x.title} uri={x.uri} />;
             })
           ) : (
             <span className="article-body-related-wrapper-placeholder montserrat">

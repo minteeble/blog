@@ -6,6 +6,7 @@ import { ArticleBody } from "../ArticleBody";
 import { CardProps } from "../Card/Card.types";
 // @ts-ignore
 import MetaTags from "react-meta-tags";
+import * as React from "react";
 
 const ArticlePage = (props: ArticlePageProps) => {
   const navigate = useNavigate();

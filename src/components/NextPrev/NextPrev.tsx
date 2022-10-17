@@ -5,6 +5,7 @@ import Axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { useParams } from "react-router";
+import * as React from "react";
 
 const NextPrev = (props: NextPrevProps) => {
   const endpoint = "https://cms-blog-backend.minteeble.com/mintql";
@@ -85,32 +86,20 @@ const NextPrev = (props: NextPrevProps) => {
   return (
     <>
       <div className="nextprev">
-        <Link
-          className={prev !== -1 ? "nextprev-link" : "nextprev-link disabled"}
-          to={uris[prev]}
-        >
+        <Link className={prev !== -1 ? "nextprev-link" : "nextprev-link disabled"} to={uris[prev]}>
           <div className="nextprev-link-body">
             <h4 className="nextprev-link-body-text spaced">
-              <FontAwesomeIcon
-                className="nextprev-link-body-text-arrow"
-                icon={faArrowLeft}
-              />
+              <FontAwesomeIcon className="nextprev-link-body-text-arrow" icon={faArrowLeft} />
               previous
             </h4>
             <span className="nextprev-link-body-line"></span>
           </div>
         </Link>
-        <Link
-          className={next !== -1 ? "nextprev-link" : "nextprev-link disabled"}
-          to={uris[next]}
-        >
+        <Link className={next !== -1 ? "nextprev-link" : "nextprev-link disabled"} to={uris[next]}>
           <div className="nextprev-link-body dx">
             <h4 className="nextprev-link-body-text spaced">
               next
-              <FontAwesomeIcon
-                className="nextprev-link-body-text-arrow"
-                icon={faArrowRight}
-              />
+              <FontAwesomeIcon className="nextprev-link-body-text-arrow" icon={faArrowRight} />
             </h4>
             <span className="nextprev-link-body-line"></span>
           </div>

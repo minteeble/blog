@@ -16,7 +16,10 @@ const html = ({
   content: string;
   config: Config;
   css?: string;
-}): string => `<!DOCTYPE html>
+}): string => {
+  console.log("Settings: ", config);
+
+  return `<!DOCTYPE html>
   <html lang="en">
     <head>
       <meta charset="utf-8" />
@@ -40,5 +43,6 @@ const html = ({
         .join("\n")}
     </body>
   </html>`;
+};
 
 export default html;

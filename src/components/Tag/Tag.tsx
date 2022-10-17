@@ -2,6 +2,7 @@ import { LoadingSpinner, LoadingSpinnerSize } from "@minteeble/ui-components";
 import Axios from "axios";
 import { useEffect, useState } from "react";
 import { TagProps } from "./Tag.types";
+import * as React from "react";
 
 const Tag = (props: TagProps) => {
   const endpoint = "https://cms-blog-backend.minteeble.com/mintql";
