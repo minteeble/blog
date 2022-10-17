@@ -1,5 +1,5 @@
 import { Config } from "./config";
-import { Stats } from './types'
+import { Stats } from "./types";
 
 /**
  * This HTML file acts as a template that we insert all our generated
@@ -10,12 +10,12 @@ const html = ({
   stats,
   content,
   config,
-  css = ''
+  css = "",
 }: {
-  stats: Stats
-  content: string
-  config: Config
-  css?: string
+  stats: Stats;
+  content: string;
+  config: Config;
+  css?: string;
 }): string => `<!DOCTYPE html>
   <html lang="en">
     <head>
@@ -25,7 +25,9 @@ const html = ({
       <title>${config.app.TITLE}</title>
       <link rel="manifest" href="${config.app.PUBLIC_URL}/manifest.json" />
       <link rel="shortcut icon" href="${config.app.PUBLIC_URL}/favicon.ico" />
-      ${stats.styles.map(filename => `<link rel="stylesheet" href="${config.app.DIST_URL}/${filename}" />`).join('\n')}
+      ${stats.styles
+        .map((filename) => `<link rel="stylesheet" href="${config.app.DIST_URL}/${filename}" />`)
+        .join("\n")}
       <style id="jss-server-side">${css}</style>
       <script id="config-server-side">
         window.__CONFIG__ = ${JSON.stringify(config)};
@@ -33,8 +35,10 @@ const html = ({
     </head>
     <body>
       <div id="root">${content}</div>
-      ${stats.scripts.map(filename => `<script src="${config.app.DIST_URL}/${filename}" crossorigin></script>`).join('\n')}
+      ${stats.scripts
+        .map((filename) => `<script src="${config.app.DIST_URL}/${filename}" crossorigin></script>`)
+        .join("\n")}
     </body>
-  </html>`
+  </html>`;
 
-export default html
+export default html;
