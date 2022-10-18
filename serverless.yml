@@ -41,6 +41,7 @@ plugins:
   - serverless-plugin-scripts
   - serverless-offline
   - serverless-s3-deploy
+  - serverless-domain-manager
 
 functions:
   serve:
@@ -57,6 +58,10 @@ functions:
           cors: true
 
 custom:
+  customDomain:
+    domainName: blog.minteeble.com
+    createRoute53Record: true
+
   distBucketUrl:
     us-east-1:
       # us-east-1 uses a different URL format than the other regions
@@ -123,6 +128,7 @@ resources:
               AllowedMethods:
                 - "GET"
               AllowedOrigins:
+                - blog.minteeble.com
                 - Fn::Join:
                     - ""
                     - - https://

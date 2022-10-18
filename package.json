@@ -9,7 +9,7 @@
     "build:serverless": "sls package",
     "build:browser": "webpack --config webpack.browser.config.js --mode production",
     "deploy": "sls deploy",
-    "gen-sitemap" : "node sitemapGenerator.js",
+    "gen-sitemap": "node sitemapGenerator.js",
     "test": "jest"
   },
   "dependencies": {
@@ -99,6 +99,7 @@
     "sass": "^1.45.0",
     "sass-loader": "^12.4.0",
     "serverless": "^3.14.0",
+    "serverless-domain-manager": "^6.1.0",
     "serverless-offline": "~8.5.0",
     "serverless-plugin-scripts": "^1.0.2",
     "serverless-s3-deploy": "^0.10.0",
