@@ -18,7 +18,7 @@ import { matchPath } from "react-router";
 import * as React from "react";
 
 const BlogNav = (props: BlogNavProps) => {
-  const [dark, useDark] = useState<boolean>(false);
+  const [dark, setDark] = useState<boolean>(false);
   const [lang, setLang] = useState<string>("en");
 
   const openDropdown = () => {
@@ -49,7 +49,7 @@ const BlogNav = (props: BlogNavProps) => {
       }
     }
 
-    useDark(!dark);
+    setDark(!dark);
   };
 
   let location = useLocation();
@@ -131,7 +131,7 @@ const BlogNav = (props: BlogNavProps) => {
 
   const style = { "--link-num": navData.length } as React.CSSProperties;
 
-  const theme = dark ? MinteebleLogoTheme.Dark : MinteebleLogoTheme.Light;
+  const theme = !dark ? MinteebleLogoTheme.Dark : MinteebleLogoTheme.Light;
 
   return (
     <>
@@ -211,7 +211,7 @@ const BlogNav = (props: BlogNavProps) => {
                   }}
                 >
                   <div className="nav-theme-trigger">
-                    <FontAwesomeIcon icon={dark ? faMoon : faSun} />
+                    <FontAwesomeIcon icon={!dark ? faMoon : faSun} />
                   </div>
                 </div>
               </>

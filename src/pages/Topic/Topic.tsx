@@ -1,4 +1,5 @@
 import { Sidebar, TopicPage } from "../../components";
+import * as React from "react";
 
 const Topic = () => {
   return (

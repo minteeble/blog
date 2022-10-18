@@ -1,5 +1,6 @@
 import { Sidebar } from "../../components";
 import ErrorPage from "../../components/ErrorPage";
+import * as React from "react";
 
 const Error = () => {
   return (

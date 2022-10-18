@@ -43,9 +43,10 @@
   }
 
   .article-body-content {
-    font-weight: 500;
-    line-height: 26px;
     letter-spacing: 0.095em;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.45;
     text-align: justify;
     color: var(--normal-text-color);
     h2 {

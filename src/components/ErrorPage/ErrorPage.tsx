@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router";
+import * as React from "react";
 
 const ErrorPage = () => {
   const navigate = useNavigate();

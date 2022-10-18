@@ -1,4 +1,5 @@
 import { Config } from "./config";
+//@ts-ignore
 import { MetaInfo, Stats } from "./types";
 
 /**
@@ -40,7 +41,7 @@ const html = ({
         window.__CONFIG__ = ${JSON.stringify(config)};
       </script>
     </head>
-    <body>
+    <body class="minteeble-dark-theme">
       <div id="root">${content}</div>
       ${stats.scripts
         .map((filename) => `<script src="${config.app.DIST_URL}/${filename}" crossorigin></script>`)
