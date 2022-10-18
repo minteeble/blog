@@ -36,23 +36,24 @@ export class ServerUtils {
       }
     }`;
 
-    axios({
+    let result = await axios({
       url: endpoint,
       method: "post",
       data: {
         query: query,
       },
-    }).then((result: any) => {
-      if (result.data.data.post === null) {
-        res = defaultMetaInfo;
-      } else {
-        const x = result.data.data.seo;
-
-        res.title = x.title;
-        res.image = x.opengraphImage.guid;
-        res.description = x.metaDesc;
-      }
     });
+
+    if (result.data.data.post === null) {
+      res = defaultMetaInfo;
+    } else {
+      const seoInfo = result.data.data.post.seo;
+
+      res.title = seoInfo.title;
+      res.image = seoInfo.opengraphImage.guid;
+      res.description = seoInfo.metaDesc;
+    }
+
     return res;
   };
 
