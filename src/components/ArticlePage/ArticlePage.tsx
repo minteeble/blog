@@ -31,13 +31,6 @@ const ArticlePage = (props: ArticlePageProps) => {
           uri: "",
           databaseId: 0,
           date: "",
-          seo: {
-            title: "",
-            metaDesc: "",
-            opengraphImage: {
-              guid: "",
-            },
-          },
         },
       },
     },
@@ -76,13 +69,6 @@ const ArticlePage = (props: ArticlePageProps) => {
       uri
       databaseId
       date
-      seo {
-        title
-        metaDesc
-        opengraphImage {
-          guid
-        }
-      }
     }
   }`;
 
@@ -123,13 +109,6 @@ const ArticlePage = (props: ArticlePageProps) => {
           uri: string;
           databaseId: number;
           date: string;
-          seo: {
-            title: string;
-            metaDesc: string;
-            opengraphImage: {
-              guid: string;
-            };
-          };
         };
       };
     };
@@ -159,18 +138,6 @@ const ArticlePage = (props: ArticlePageProps) => {
       (y.featuredImage && y.featuredImage.node.guid) ||
       "https://cms-blog-backend.minteeble.com/wp-content/uploads/2022/09/Desktop-1.jpg",
     id: y.databaseId ?? "1",
-  };
-
-  interface meta {
-    title: string;
-    desc: string;
-    image: string;
-  }
-
-  const metaData: meta = {
-    title: y.seo.title,
-    desc: y.seo.metaDesc,
-    image: y.seo.opengraphImage.guid,
   };
 
   const relatedQuery = `{
@@ -257,12 +224,6 @@ const ArticlePage = (props: ArticlePageProps) => {
 
   return (
     <>
-      <MetaTags>
-        <title>{metaData.title}</title>
-        <meta name="description" content={metaData.desc} />
-        <meta property="og:title" content={metaData.title} />
-        <meta property="og:image" content={metaData.image} />
-      </MetaTags>
       <ArticleBody
         id={articleData.id}
         title={articleData.title}

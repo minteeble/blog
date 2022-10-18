@@ -31,6 +31,9 @@ const html = ({
       <meta name="theme-color" content="${config.app.THEME_COLOR}" />
       <title>${meta.title}</title>
       <meta name="description" content="${meta.description}">
+      <meta name="og:title" content="${meta.title}">
+      <meta name="og:description" content="${meta.image}">
+
       <link rel="manifest" href="${config.app.PUBLIC_URL}/manifest.json" />
       <link rel="shortcut icon" href="${config.app.PUBLIC_URL}/favicon.ico" />
       ${stats.styles
