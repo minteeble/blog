@@ -9,6 +9,7 @@
     "build:serverless": "sls package",
     "build:browser": "webpack --config webpack.browser.config.js --mode production",
     "deploy": "sls deploy",
+    "gen-sitemap" : "node sitemapGenerator.js",
     "test": "jest"
   },
   "dependencies": {

@@ -1,11 +1,14 @@
 //@ts-ignore
+import format from "xml-formatter";
 import { MetaInfo } from "./types";
 const axios = require("axios");
 
 export class ServerUtils {
   public static readonly pathRegex = /^[\/](en|it)[\/][A-Za-z0-9_-]+[\/][A-Za-z0-9_-]+/;
 
-  public static isPathValid(path: string): boolean {
+  public static readonly sitemapRegex = /^[\/]sitemap[\.]xml[\/]{0,1}$/;
+
+  public static isPostPathValid(path: string): boolean {
     return this.pathRegex.test(path);
   }
 
@@ -64,7 +67,7 @@ export class ServerUtils {
       image: "https://cms-blog-backend.minteeble.com/wp-content/uploads/2022/09/Desktop-1.jpg",
     };
 
-    let isValid = this.isPathValid(path);
+    let isValid = this.isPostPathValid(path);
 
     if (!isValid) {
       return defaultMetaInfo;
@@ -72,4 +75,99 @@ export class ServerUtils {
 
     return this.getPostMetaInfo(path);
   }
+
+  public static isSitemapPathValid(path: string): boolean {
+    return this.sitemapRegex.test(path);
+  }
+
+  public static getSitemap = async () => {
+    const endpoint = "https://cms-blog-backend.minteeble.com/mintql";
+
+    const queryIt = `{
+                    posts(where: {language: IT}) {
+                      edges {
+                        node {
+                          language {
+                            slug
+                          }
+                          categories {
+                            edges {
+                              node {
+                                slug
+                              }
+                            }
+                          }
+                          slug
+                          modifiedGmt
+                        }
+                      }
+                    }
+                  }`;
+
+    const queryEn = `
+    {
+      posts(where: {language: EN}) {
+        edges {
+          node {
+            language {
+              slug
+            }
+            categories {
+              edges {
+                node {
+                  slug
+                }
+              }
+            }
+            slug
+            modifiedGmt
+          }
+        }
+      }
+    }
+    `;
+
+    let promiseIt = axios({
+      url: endpoint,
+      method: "post",
+      data: {
+        query: queryIt,
+      },
+    });
+
+    let promiseEn = axios({
+      url: endpoint,
+      method: "post",
+      data: {
+        query: queryEn,
+      },
+    });
+
+    let [resultIt, resultEn] = await Promise.all([promiseIt, promiseEn]);
+
+    let urls = [];
+    let short = [...resultEn.data.data.posts.edges, ...resultIt.data.data.posts.edges];
+    const node = short.length > 0 ? short.length : 0;
+    for (let i = 0; i < node; i++) {
+      let x = {
+        loc: `https://blog-test.minteeble.com/${short[i].node.language.slug}/${short[i].node.categories.edges[0].node.slug}/${short[i].node.slug}`,
+        lastmod: short[i].node.modifiedGmt,
+      };
+      urls.push(x);
+    }
+
+    // console.log(node);
+
+    let outData = format(
+      `<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="https://blog-test.minteeble.com/wp-content/plugins/wordpress-seo/css/sitemap.xml"?><sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls
+        .map((x) => {
+          return `<sitemap><loc>${x.loc}</loc><lastmod>${x.lastmod}</lastmod></sitemap>`;
+        })
+        .join("")}</sitemapindex>`,
+    );
+
+    return outData;
+
+    // fs.writeFileSync("./public/sitemap.xml", generateSitemapItems(urls));
+  };
 }
