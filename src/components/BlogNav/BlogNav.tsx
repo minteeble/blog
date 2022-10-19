@@ -218,6 +218,24 @@ const BlogNav = (props: BlogNavProps) => {
             ),
             position: NavbarItemPosition.Right,
           },
+          {
+            content: (
+              <>
+                <ul>
+                  <li>
+                    <a href="#"></a>
+                  </li>
+                  <li>
+                    <a href="#"></a>
+                  </li>
+                  <li>
+                    <a href="#"></a>
+                  </li>
+                </ul>
+              </>
+            ),
+            position: NavbarItemPosition.Right,
+          },
         ]}
       />
     </>

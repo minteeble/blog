@@ -24,28 +24,36 @@ export default function App() {
   const config = useConfig();
   return (
     <div className="app">
-      <BlogNav />
-      <div className="app-body">
-        {/** @ts-ignore */}
-        <Routes>
+      <header>
+        <nav>
+          <BlogNav />
+        </nav>
+      </header>
+      <main>
+        <div className="app-body">
           {/** @ts-ignore */}
-          <Route path={"/ciao"} element={<Test />}></Route>
+          <Routes>
+            {/** @ts-ignore */}
+            <Route path={"/ciao"} element={<Test />}></Route>
 
-          {/** @ts-ignore */}
-          <Route path="/:lang/:topic/:title" element={<Article />}></Route>
-          {/** @ts-ignore */}
-          <Route path="/:lang/:topic" element={<Topic />}></Route>
-          {/** @ts-ignore */}
-          <Route path="/:lang" element={<Home />}></Route>
-          {/** @ts-ignore */}
-          <Route path="/" element={<Navigate to={"/en"} replace={true} />}></Route>
-          {/** @ts-ignore */}
-          <Route path="/:lang/not-found" element={<Error />}></Route>
-          {/** @ts-ignore */}
-          <Route path="*" element={<Error />}></Route>
-        </Routes>
-      </div>
-      <Footer />
+            {/** @ts-ignore */}
+            <Route path="/:lang/:topic/:title" element={<Article />}></Route>
+            {/** @ts-ignore */}
+            <Route path="/:lang/:topic" element={<Topic />}></Route>
+            {/** @ts-ignore */}
+            <Route path="/:lang" element={<Home />}></Route>
+            {/** @ts-ignore */}
+            <Route path="/" element={<Navigate to={"/en"} replace={true} />}></Route>
+            {/** @ts-ignore */}
+            <Route path="/:lang/not-found" element={<Error />}></Route>
+            {/** @ts-ignore */}
+            <Route path="*" element={<Error />}></Route>
+          </Routes>
+        </div>
+      </main>
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 }

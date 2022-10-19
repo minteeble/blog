@@ -116,12 +116,12 @@ const Sidebar = (props: SidebarProps) => {
 
   return (
     <>
-      <div id="sidebar">
+      <aside id="sidebar">
         {sections.map((x: any, index: number) => {
           return <SidebarSection key={index} name={sections[index]} data={SidebarData} />;
         })}
         {props.article && props.article === true ? <Tag id={props.id!} /> : ""}
-      </div>
+      </aside>
     </>
   );
 };
