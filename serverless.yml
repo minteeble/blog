@@ -127,15 +127,9 @@ resources:
                 - "*"
               AllowedMethods:
                 - "GET"
+                - "HEAD"
               AllowedOrigins:
-                - blog.minteeble.com
-                - Fn::Join:
-                    - ""
-                    - - https://
-                      - Ref: ApiGatewayRestApi
-                      - .execute-api.
-                      - Ref: AWS::Region
-                      - .amazonaws.com
+                - "*"
               MaxAge: 3000
 
   Outputs:
