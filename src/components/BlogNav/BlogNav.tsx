@@ -13,7 +13,7 @@ import {
 } from "@minteeble/ui-components";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretDown, faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
+import { faCaretDown, faSun, faMoon, faHamburger, faBars } from "@fortawesome/free-solid-svg-icons";
 import { matchPath } from "react-router";
 import * as React from "react";
 import { faFacebook, faInstagram, faTiktok } from "@fortawesome/free-brands-svg-icons";
@@ -238,11 +238,25 @@ const BlogNav = (props: BlogNavProps) => {
                     </a>
                   </li>
                   <li className="nav-social-item">
-                    <a href="#" target="_blank" className="nav-social-item-link">
+                    <a
+                      href="https://www.tiktok.com/@minteeble?_t=8WddhTLtjba&_r=1"
+                      target="_blank"
+                      className="nav-social-item-link"
+                    >
                       <FontAwesomeIcon icon={faTiktok} className="nav-social-item-link-icon" />
                     </a>
                   </li>
                 </ul>
+              </>
+            ),
+            position: NavbarItemPosition.Right,
+          },
+          {
+            content: (
+              <>
+                <div className="nav-hamburger">
+                  <FontAwesomeIcon icon={faBars} />
+                </div>
               </>
             ),
             position: NavbarItemPosition.Right,
