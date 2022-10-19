@@ -15,9 +15,10 @@ import { Link, useLocation, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 import { matchPath } from "react-router";
+import * as React from "react";
 
 const BlogNav = (props: BlogNavProps) => {
-  const [dark, useDark] = useState<boolean>(false);
+  const [dark, setDark] = useState<boolean>(false);
   const [lang, setLang] = useState<string>("en");
 
   const openDropdown = () => {
@@ -48,7 +49,7 @@ const BlogNav = (props: BlogNavProps) => {
       }
     }
 
-    useDark(!dark);
+    setDark(!dark);
   };
 
   let location = useLocation();
@@ -117,10 +118,7 @@ const BlogNav = (props: BlogNavProps) => {
 
   let navData: navData[] = [];
 
-  let node =
-    res.data.data.categories.edges.length > 0
-      ? res.data.data.categories.edges.length
-      : 0;
+  let node = res.data.data.categories.edges.length > 0 ? res.data.data.categories.edges.length : 0;
 
   for (let i = 0; i < node; i++) {
     let x: navData = {
@@ -133,20 +131,14 @@ const BlogNav = (props: BlogNavProps) => {
 
   const style = { "--link-num": navData.length } as React.CSSProperties;
 
-  const theme = dark ? MinteebleLogoTheme.Dark : MinteebleLogoTheme.Light;
+  const theme = !dark ? MinteebleLogoTheme.Dark : MinteebleLogoTheme.Light;
 
   return (
     <>
       <Navbar
         items={[
           {
-            content: (
-              <MinteebleLogo
-                type={MinteebleLogoType.Minimal}
-                size={MinteebleLogoSize.Medium}
-                theme={theme}
-              />
-            ),
+            content: <MinteebleLogo type={MinteebleLogoType.Minimal} size={MinteebleLogoSize.Medium} theme={theme} />,
             position: NavbarItemPosition.Left,
           },
           {
@@ -169,20 +161,14 @@ const BlogNav = (props: BlogNavProps) => {
                   }}
                 >
                   Categories
-                  <FontAwesomeIcon
-                    className="nav-topic-arrow"
-                    icon={faCaretDown}
-                  />
+                  <FontAwesomeIcon className="nav-topic-arrow" icon={faCaretDown} />
                 </h3>
                 <div className="nav-topic-dropdown shadow-1">
                   <ul className="nav-topic-dropdown-list">
                     {isLoaded ? (
                       navData.map((x: navData, index: number) => {
                         return (
-                          <li
-                            key={index}
-                            className="nav-topic-dropdown-list-item"
-                          >
+                          <li key={index} className="nav-topic-dropdown-list-item">
                             <Link
                               onClick={() => {
                                 closeDropdown();
@@ -210,9 +196,7 @@ const BlogNav = (props: BlogNavProps) => {
           {
             content: (
               <a className="nav-lang" href={`/${lang === "en" ? "it" : "en"}`}>
-                <button className="nav-lang-btn spaced">
-                  {lang === "en" ? "it" : "en"}
-                </button>
+                <button className="nav-lang-btn spaced">{lang === "en" ? "it" : "en"}</button>
               </a>
             ),
             position: NavbarItemPosition.Right,
@@ -227,7 +211,7 @@ const BlogNav = (props: BlogNavProps) => {
                   }}
                 >
                   <div className="nav-theme-trigger">
-                    <FontAwesomeIcon icon={dark ? faMoon : faSun} />
+                    <FontAwesomeIcon icon={!dark ? faMoon : faSun} />
                   </div>
                 </div>
               </>

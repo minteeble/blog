@@ -1,6 +1,7 @@
 import { SidebarSectionProps } from "./SidebarSection.types";
 import SidebarPreview from "../SidebarPreview/SidebarPreview";
 import { LoadingSpinner, LoadingSpinnerSize } from "@minteeble/ui-components";
+import * as React from "react";
 
 const SidebarSection = (props: SidebarSectionProps) => {
   let data = props.data;
@@ -9,10 +10,7 @@ const SidebarSection = (props: SidebarSectionProps) => {
     <>
       <div className="sidebar-section">
         <div className="sidebar-section-header">
-          <h2
-            className="sidebar-section-header-name kanit"
-            dangerouslySetInnerHTML={{ __html: props.name }}
-          ></h2>
+          <h2 className="sidebar-section-header-name kanit" dangerouslySetInnerHTML={{ __html: props.name }}></h2>
           <span className="sidebar-section-header-line"></span>
         </div>
         <div className="sidebar-section-body">
@@ -29,10 +27,7 @@ const SidebarSection = (props: SidebarSectionProps) => {
               );
             })
           ) : (
-            <LoadingSpinner
-              className="sidebar-section-spinner"
-              Size={LoadingSpinnerSize.Medium}
-            />
+            <LoadingSpinner className="sidebar-section-spinner" Size={LoadingSpinnerSize.Medium} />
           )}
         </div>
       </div>

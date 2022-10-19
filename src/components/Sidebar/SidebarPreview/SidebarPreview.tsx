@@ -2,6 +2,7 @@ import { LoadingSpinner, LoadingSpinnerSize } from "@minteeble/ui-components";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { SidebarPreviewProps } from "./SidebarPreview.types";
+import * as React from "react";
 
 const SidebarPreview = (props: SidebarPreviewProps) => {
   const [isLoaded, setIsLoaded] = useState<boolean>(false);

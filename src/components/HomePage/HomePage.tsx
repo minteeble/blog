@@ -7,6 +7,7 @@ import { PreviewProps } from "../Preview/Preview.types";
 import Preview from "../Preview";
 import { useParams } from "react-router";
 import { LoadingSpinner, LoadingSpinnerSize } from "@minteeble/ui-components";
+import * as React from "react";
 
 const HomePage = () => {
   const endpoint = "https://cms-blog-backend.minteeble.com/mintql";

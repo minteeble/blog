@@ -4,6 +4,7 @@ import { useNavigate, useParams } from "react-router";
 import { Preview, PreviewProps } from "../Preview";
 import { LoadingSpinner, LoadingSpinnerSize } from "@minteeble/ui-components";
 import Sidebar from "../Sidebar";
+import * as React from "react";
 
 const TopicPage = () => {
   const endpoint = "https://cms-blog-backend.minteeble.com/mintql";
@@ -116,9 +117,7 @@ const TopicPage = () => {
       <div className="topic-body">
         {isLoaded ? (
           <>
-            <h1 className="topic-body-title kanit">
-              Articles of category {topic}
-            </h1>
+            <h1 className="topic-body-title kanit">Articles of category {topic}</h1>
             {previewData.map((x: PreviewProps, index: number) => {
               return (
                 <Preview

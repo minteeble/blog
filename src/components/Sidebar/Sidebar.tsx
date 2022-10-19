@@ -4,6 +4,7 @@ import SidebarSection from "./SidebarSection";
 import { useParams } from "react-router";
 import { SidebarProps } from "./Sidebar.types";
 import Tag from "../Tag";
+import * as React from "react";
 
 const Sidebar = (props: SidebarProps) => {
   const endpoint = "https://cms-blog-backend.minteeble.com/mintql";
@@ -90,10 +91,7 @@ const Sidebar = (props: SidebarProps) => {
     },
   ];
 
-  let edgesLength =
-    side.data.data.posts.edges.length > sectionPosts
-      ? sectionPosts
-      : side.data.data.posts.edges.length;
+  let edgesLength = side.data.data.posts.edges.length > sectionPosts ? sectionPosts : side.data.data.posts.edges.length;
 
   let y = side.data.data.posts.edges;
 
@@ -120,13 +118,7 @@ const Sidebar = (props: SidebarProps) => {
     <>
       <div id="sidebar">
         {sections.map((x: any, index: number) => {
-          return (
-            <SidebarSection
-              key={index}
-              name={sections[index]}
-              data={SidebarData}
-            />
-          );
+          return <SidebarSection key={index} name={sections[index]} data={SidebarData} />;
         })}
         {props.article && props.article === true ? <Tag id={props.id!} /> : ""}
       </div>

@@ -34,10 +34,7 @@ axios({
 }).then((result) => {
   let urls = [];
   let short = result.data.data.posts.edges;
-  const node =
-    result.data.data.posts.edges.length > 0
-      ? result.data.data.posts.edges.length
-      : 0;
+  const node = result.data.data.posts.edges.length > 0 ? result.data.data.posts.edges.length : 0;
   for (let i = 0; i < node; i++) {
     let x = {
       loc: `https://blog-test.minteeble.com/${short[i].node.language.slug}/${short[i].node.categories.edges[0].node.slug}/${short[i].node.slug}`,
@@ -53,10 +50,10 @@ axios({
 
 function generateSitemapItems(urls) {
   return format(
-    `<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="//blog-test.minteeble.com/wp-content/plugins/wordpress-seo/css/sitemap.xml"?><sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls
+    `<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="https://blog-test.minteeble.com/wp-content/plugins/wordpress-seo/css/sitemap.xml"?><sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls
       .map((x) => {
         return `<sitemap><loc>${x.loc}</loc><lastmod>${x.lastmod}</lastmod></sitemap>`;
       })
-      .join("")}</sitemapindex>`
+      .join("")}</sitemapindex>`,
   );
 }
