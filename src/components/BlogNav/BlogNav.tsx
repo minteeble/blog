@@ -16,6 +16,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown, faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 import { matchPath } from "react-router";
 import * as React from "react";
+import { faFacebook, faInstagram, faTiktok } from "@fortawesome/free-brands-svg-icons";
 
 const BlogNav = (props: BlogNavProps) => {
   const [dark, setDark] = useState<boolean>(false);
@@ -221,15 +222,25 @@ const BlogNav = (props: BlogNavProps) => {
           {
             content: (
               <>
-                <ul>
-                  <li>
-                    <a href="#"></a>
+                <ul className="nav-social">
+                  <li className="nav-social-item">
+                    <a href="https://www.instagram.com/minteeble/" target="_blank" className="nav-social-item-link">
+                      <FontAwesomeIcon icon={faInstagram} className="nav-social-item-link-icon" />
+                    </a>
                   </li>
-                  <li>
-                    <a href="#"></a>
+                  <li className="nav-social-item">
+                    <a
+                      href="https://www.facebook.com/profile.php?id=100086292045732"
+                      target="_blank"
+                      className="nav-social-item-link"
+                    >
+                      <FontAwesomeIcon icon={faFacebook} className="nav-social-item-link-icon" />
+                    </a>
                   </li>
-                  <li>
-                    <a href="#"></a>
+                  <li className="nav-social-item">
+                    <a href="#" target="_blank" className="nav-social-item-link">
+                      <FontAwesomeIcon icon={faTiktok} className="nav-social-item-link-icon" />
+                    </a>
                   </li>
                 </ul>
               </>
