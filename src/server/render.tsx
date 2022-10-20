@@ -1,7 +1,7 @@
 /**
  * Server Side Rendering
  */
-import { APIGatewayEvent } from "aws-lambda";
+import { APIGatewayEvent, APIGatewayProxyCallback, APIGatewayProxyResult } from "aws-lambda";
 import * as React from "react";
 import { renderToString } from "react-dom/server";
 
@@ -17,9 +17,17 @@ import { ServerUtils } from "./ServerUtils";
 /**
  * Server-side rendering
  */
-export default async function render(_event: APIGatewayEvent): Promise<string> {
+export default async function render(_event: APIGatewayEvent): Promise<APIGatewayProxyResult> {
   if (ServerUtils.isSitemapPathValid(_event.path)) {
-    return await ServerUtils.getSitemap();
+    const res = await ServerUtils.getSitemap();
+
+    const resObj = {
+      statusCode: 200,
+      headers: { "content-type": "application/xml" },
+      body: "<bestia>Davide</bestia>",
+    };
+
+    return resObj;
   }
 
   let meta = await ServerUtils.getPostMetaInfo(_event.path);
