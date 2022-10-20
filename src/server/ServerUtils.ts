@@ -163,7 +163,7 @@ export class ServerUtils {
       `<?xml version="1.0" encoding="UTF-8"?>
       <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls
         .map((x) => {
-          return `<url><loc>${x.loc}</loc><lastmod>${x.lastmod}</lastmod></url>`;
+          return `<url><loc>${x.loc}</loc><lastmod>${x.lastmod}+00:00</lastmod></url>`;
         })
         .join("")}</urlset>`,
     );

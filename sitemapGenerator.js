@@ -52,7 +52,7 @@ function generateSitemapItems(urls) {
   return format(
     `<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="https://blog-test.minteeble.com/wp-content/plugins/wordpress-seo/css/sitemap.xml"?><sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls
       .map((x) => {
-        return `<sitemap><loc>${x.loc}</loc><lastmod>${x.lastmod}</lastmod></sitemap>`;
+        return `<sitemap><loc>${x.loc}</loc><lastmod>${x.lastmod}+00:00</lastmod></sitemap>`;
       })
       .join("")}</sitemapindex>`,
   );
