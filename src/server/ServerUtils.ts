@@ -1,6 +1,7 @@
 //@ts-ignore
 import format from "xml-formatter";
 import { MetaInfo } from "./types";
+const fs = require("fs");
 const axios = require("axios");
 
 export class ServerUtils {
@@ -150,7 +151,7 @@ export class ServerUtils {
     const node = short.length > 0 ? short.length : 0;
     for (let i = 0; i < node; i++) {
       let x = {
-        loc: `https://blog-test.minteeble.com/${short[i].node.language.slug}/${short[i].node.categories.edges[0].node.slug}/${short[i].node.slug}`,
+        loc: `https://blog.minteeble.com/${short[i].node.language.slug}/${short[i].node.categories.edges[0].node.slug}/${short[i].node.slug}`,
         lastmod: short[i].node.modifiedGmt,
       };
       urls.push(x);
@@ -159,15 +160,15 @@ export class ServerUtils {
     // console.log(node);
 
     let outData = format(
-      `<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="https://blog-test.minteeble.com/wp-content/plugins/wordpress-seo/css/sitemap.xml"?><sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls
+      `<?xml version="1.0" encoding="UTF-8"?>
+      <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls
         .map((x) => {
-          return `<sitemap><loc>${x.loc}</loc><lastmod>${x.lastmod}</lastmod></sitemap>`;
+          return `<url><loc>${x.loc}</loc><lastmod>${x.lastmod}</lastmod></url>`;
         })
-        .join("")}</sitemapindex>`,
+        .join("")}</urlset>`,
     );
 
+    // fs.writeFileSync("./public/sitemap.xml", outData);
     return outData;
-
-    // fs.writeFileSync("./public/sitemap.xml", generateSitemapItems(urls));
   };
 }

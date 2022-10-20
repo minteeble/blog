@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="//blog-test.minteeble.com/wp-content/plugins/wordpress-seo/css/sitemap.xml"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <sitemap>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
         <loc>
-            https://blog-test.minteeble.com/en/blockchain/the-ethereum-merge
+            https://blog.minteeble.com/en/blockchain/the-ethereum-merge
         </loc>
         <lastmod>
             2022-10-12T07:45:04
         </lastmod>
-    </sitemap>
-</sitemapindex>
+    </url>
+    <url>
+        <loc>
+            https://blog.minteeble.com/it/blockchain-it/il-merge-di-ethereum
+        </loc>
+        <lastmod>
+            2022-10-18T13:16:15
+        </lastmod>
+    </url>
+</urlset>
