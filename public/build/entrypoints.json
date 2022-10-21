@@ -1,0 +1,12 @@
+{
+  "entrypoints": {
+    "main": {
+      "css": [
+        "http://localhost:8081/build/main.css"
+      ],
+      "js": [
+        "http://localhost:8081/build/main.js"
+      ]
+    }
+  }
+}

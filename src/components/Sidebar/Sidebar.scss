@@ -1,0 +1,14 @@
+@import "./SidebarPreview/SidebarPreview.scss";
+@import "./SidebarSection/SidebarSection.scss";
+
+#sidebar {
+  width: 30%;
+  max-width: 21.6rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}

@@ -3,3 +3,57 @@
 
 // Components
 @import "/src/components/components.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--secondary-bg);
+}
+
+header {
+  position: fixed;
+  z-index: 999;
+  width: 100vw;
+  margin-bottom: 5rem;
+}
+
+main {
+  padding-top: 5rem;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+  &:hover {
+    color: var(--primary-hover);
+  }
+}
+
+strong {
+  font-weight: bold;
+}
+
+img {
+  border-radius: 1rem;
+  max-width: 100%;
+  width: unset;
+  height: unset;
+}
+
+.app-body {
+  margin: 0 9%;
+  position: relative;
+}
+
+.footer-copyright {
+  @extend .montserrat !optional;
+}
+
+.footer-wrapper-privacy {
+  @extend .spaced !optional;
+}

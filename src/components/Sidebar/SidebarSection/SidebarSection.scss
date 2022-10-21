@@ -1,0 +1,41 @@
+.sidebar-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 1.3rem;
+
+  .sidebar-section-header {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    margin-bottom: 1.5rem;
+
+    .sidebar-section-header-name {
+      font-weight: 600;
+      font-size: 1.25rem;
+      white-space: nowrap;
+      margin-right: 0.4rem;
+      color: var(--normal-text-color);
+    }
+
+    .sidebar-section-header-line {
+      width: 100%;
+      background: var(--primary-color);
+      height: 0.3rem;
+      margin: auto 0;
+    }
+  }
+
+  .loading-spinner {
+    width: 100%;
+    height: 20rem;
+  }
+
+  .sidebar-section-body {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+}

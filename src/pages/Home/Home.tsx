@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { Button } from "@minteeble/ui-components";
-import { TestComponent } from "../../components";
+import HomePage from "../../components/HomePage";
+import * as React from "react";
 
 const Home = () => {
   return (
-    <div className="home-page">
-      Minteeble test 03 <Button text="ddd" />
-      <TestComponent />
+    <div className="home-page" style={{ position: "relative" }}>
+      <HomePage />
     </div>
   );
 };
