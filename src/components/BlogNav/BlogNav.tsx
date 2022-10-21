@@ -139,7 +139,7 @@ const BlogNav = (props: BlogNavProps) => {
       <Navbar
         items={[
           {
-            content: <MinteebleLogo type={MinteebleLogoType.Minimal} size={MinteebleLogoSize.Medium} theme={theme} />,
+            content: <MinteebleLogo type={MinteebleLogoType.Blog} size={MinteebleLogoSize.Medium} theme={theme} />,
             position: NavbarItemPosition.Left,
           },
           {
