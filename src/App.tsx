@@ -34,9 +34,6 @@ export default function App() {
           {/** @ts-ignore */}
           <Routes>
             {/** @ts-ignore */}
-            <Route path={"/ciao"} element={<Test />}></Route>
-
-            {/** @ts-ignore */}
             <Route path="/:lang/:topic/:title" element={<Article />}></Route>
             {/** @ts-ignore */}
             <Route path="/:lang/:topic" element={<Topic />}></Route>
