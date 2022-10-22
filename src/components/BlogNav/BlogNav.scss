@@ -1,5 +1,5 @@
 .navbar {
-  padding: 1.8rem 9rem;
+  padding: 0.5rem 9rem;
 }
 
 .nav-topic {
@@ -109,7 +109,7 @@
 .nav-social {
   position: absolute;
   top: 100%;
-  left: 2.5rem;
+  left: 2.6%;
   list-style-type: none;
   margin-top: 2rem;
   .nav-social-item {
@@ -139,15 +139,14 @@
 
 @media only screen and (max-width: 1200px) {
   .navbar {
-    padding: 1.8rem 6.5rem;
+    padding: 0.5rem 6.5rem;
   }
 }
 
 @media only screen and (max-width: 992px) {
   .navbar {
-    padding: 1.8rem 5.5rem;
+    padding: 0.5rem 5.5rem;
     .nav-social {
-      left: 1.6rem;
       .nav-social-item {
         .nav-social-item-link {
           font-size: 1.8rem;
@@ -159,9 +158,8 @@
 
 @media only screen and (max-width: 768px) {
   .navbar {
-    padding: 1.8rem 4.3rem;
+    padding: 0.5rem 4.3rem;
     .nav-social {
-      left: 1.3rem;
       .nav-social-item {
         .nav-social-item-link {
           font-size: 1.5rem;
@@ -173,18 +171,29 @@
 
 @media only screen and (max-width: 600px) {
   .navbar {
-    .nav-hamburger {
-      display: none;
+    .nav-content {
+      padding: 0 3rem;
     }
 
-    padding: 1.8rem 4.3rem;
+    padding: 0.5rem 4.3rem;
     .nav-social {
-      left: 1.3rem;
+      position: static;
+      flex-direction: row !important;
+      margin-bottom: 6rem;
       .nav-social-item {
         .nav-social-item-link {
-          font-size: 1.5rem;
+          font-size: 2rem;
         }
       }
+    }
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .navbar {
+    padding: 0.5rem 2.4rem;
+    .nav-content {
+      padding: 0 2rem;
     }
   }
 }

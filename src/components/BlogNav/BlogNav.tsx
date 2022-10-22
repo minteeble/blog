@@ -251,16 +251,6 @@ const BlogNav = (props: BlogNavProps) => {
             ),
             position: NavbarItemPosition.Right,
           },
-          {
-            content: (
-              <>
-                <div className="nav-hamburger">
-                  <FontAwesomeIcon icon={faBars} />
-                </div>
-              </>
-            ),
-            position: NavbarItemPosition.Right,
-          },
         ]}
       />
     </>
