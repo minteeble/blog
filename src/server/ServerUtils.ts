@@ -9,8 +9,15 @@ export class ServerUtils {
 
   public static readonly sitemapRegex = /^[\/]sitemap[\.]xml[\/]{0,1}$/;
 
+  public static readonly feedRegex = /[\/]((en|it)[\/]|(en|it)[\/][A-Za-z0-9_-]+[\/][A-Za-z0-9_-]+[\/])feed/;
+  // /^https:\/\/blog.minteeble.com[\/]((en|it)[\/]|(en|it)[\/][A-Za-z0-9_-]+[\/][A-Za-z0-9_-]+[\/])feed/;
+
   public static isPostPathValid(path: string): boolean {
     return this.pathRegex.test(path);
+  }
+
+  public static isFeedPathValid(path: string): boolean {
+    return this.feedRegex.test(path);
   }
 
   public static getPostMetaInfo = async (path: string): Promise<MetaInfo> => {
@@ -170,5 +177,25 @@ export class ServerUtils {
 
     // fs.writeFileSync("./public/sitemap.xml", outData);
     return outData;
+  };
+
+  public static getFeed = async (path: string) => {
+    let isValid = this.isFeedPathValid(path);
+
+    if (!isValid) {
+      return "<mock></mock>";
+    }
+
+    //let wpPath = path.replace("blog", "cms-blog-backend");
+
+    let result = await axios({
+      url: "https://cms-blog-backend.minteeble.com/en/blockchain/the-ethereum-merge/feed",
+      method: "get",
+      headers: {
+        Accept: "application/xml",
+      },
+    });
+
+    return result;
   };
 }

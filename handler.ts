@@ -16,6 +16,18 @@ export const serve = async (event: APIGatewayEvent, _context: Context): Promise<
       return resObj;
     }
 
+    if (ServerUtils.isFeedPathValid(event.path)) {
+      const res = await ServerUtils.getFeed(event.path);
+
+      const resObj = {
+        statusCode: 200,
+        headers: { "content-type": "application/xml" },
+        body: res,
+      };
+
+      return resObj;
+    }
+
     // We use asynchronous import here so we can better catch server-side errors during development
     const render = (await import("./src/server/render")).default;
     return {
