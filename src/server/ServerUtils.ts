@@ -194,8 +194,8 @@ export class ServerUtils {
 
     let res = result.data.replace(/cms-blog-backend/gi, "blog");
 
-    res = res.replaceAll(
-      "https://blog.minteeble.com/wp-content/",
+    res = res.replace(
+      /https:[\/][\/]blog\.minteeble\.com[\/]wp-content[\/]/gi,
       "https://cms-blog-backend.minteeble.com/wp-content/",
     );
 

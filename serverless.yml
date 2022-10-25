@@ -8,6 +8,7 @@ disabledDeprecations:
 
 provider:
   name: aws
+  versionFunctions: false
   runtime: nodejs12.x
   region: ${opt:region, 'eu-central-1'}
   stage: ${opt:stage, 'dev'}
@@ -42,6 +43,7 @@ plugins:
   - serverless-offline
   - serverless-s3-deploy
   - serverless-domain-manager
+  - serverless-prune-plugin
 
 functions:
   serve:
@@ -58,6 +60,9 @@ functions:
           cors: true
 
 custom:
+  prune:
+    automatic: true
+    number: 3
   customDomain:
     domainName: blog.minteeble.com
     createRoute53Record: true

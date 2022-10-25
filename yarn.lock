@@ -9346,6 +9346,13 @@ serverless-plugin-scripts@^1.0.2:
   resolved "https://registry.yarnpkg.com/serverless-plugin-scripts/-/serverless-plugin-scripts-1.0.2.tgz#21808c3cfd0a1a84e48c0660b0f6f370b5665486"
   integrity sha512-+OL9fFz5r6BXNHfpu9MDLehS/haC0fy/T3V5uJsTfLAnNsn+PzM6BmvefUfWG372hBT7piTbywB1Vl1+4LmI5Q==
 
+serverless-prune-plugin@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/serverless-prune-plugin/-/serverless-prune-plugin-2.0.1.tgz#c50d408a2e6f89ce1e72e0bb8ea3c914be1e67d9"
+  integrity sha512-fWttDV5TD3K6g9NRDJUuA/cq0AzAI0ya1FZXQKtCnWFfaGP7CzZHZWzlvnNofqvKdpY8vXtaAiswc6gdHXaTUw==
+  dependencies:
+    bluebird "^3.7.2"
+
 serverless-s3-deploy@^0.10.0:
   version "0.10.1"
   resolved "https://registry.yarnpkg.com/serverless-s3-deploy/-/serverless-s3-deploy-0.10.1.tgz#8f4eb2166dac34ce6bf1e26929953b23fc51f486"
