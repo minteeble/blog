@@ -9,8 +9,7 @@ export class ServerUtils {
 
   public static readonly sitemapRegex = /^[\/]sitemap[\.]xml[\/]{0,1}$/;
 
-  public static readonly feedRegex = /[\/]((en|it)[\/]|(en|it)[\/][A-Za-z0-9_-]+[\/][A-Za-z0-9_-]+[\/])feed/;
-  // /^https:\/\/blog.minteeble.com[\/]((en|it)[\/]|(en|it)[\/][A-Za-z0-9_-]+[\/][A-Za-z0-9_-]+[\/])feed/;
+  public static readonly feedRegex = /^[\/]((en|it)[\/]|(en|it)[\/][A-Za-z0-9_-]+[\/][A-Za-z0-9_-]+[\/])feed/;
 
   public static isPostPathValid(path: string): boolean {
     return this.pathRegex.test(path);
@@ -193,6 +192,8 @@ export class ServerUtils {
       method: "get",
     });
 
-    return format(result.data);
+    const res = result.data.replace(/cms-blog-backend/gi, "blog");
+
+    return format(res);
   };
 }
