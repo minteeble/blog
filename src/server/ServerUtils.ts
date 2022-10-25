@@ -192,7 +192,12 @@ export class ServerUtils {
       method: "get",
     });
 
-    const res = result.data.replace(/cms-blog-backend/gi, "blog");
+    let res = result.data.replace(/cms-blog-backend/gi, "blog");
+
+    res = res.replaceAll(
+      "https://blog.minteeble.com/wp-content/",
+      "https://cms-blog-backend.minteeble.com/wp-content/",
+    );
 
     return format(res);
   };
