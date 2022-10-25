@@ -186,16 +186,13 @@ export class ServerUtils {
       return "<mock></mock>";
     }
 
-    //let wpPath = path.replace("blog", "cms-blog-backend");
+    let wpPath = "https://cms-blog-backend.minteeble.com" + path;
 
     let result = await axios({
-      url: "https://cms-blog-backend.minteeble.com/en/blockchain/the-ethereum-merge/feed",
+      url: wpPath,
       method: "get",
-      headers: {
-        Accept: "application/xml",
-      },
     });
 
-    return result;
+    return format(result.data);
   };
 }
