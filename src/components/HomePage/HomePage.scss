@@ -16,3 +16,10 @@
     height: 20rem;
   }
 }
+
+@media only screen and (max-width: 992px) {
+  .cards {
+    height: 45rem;
+    flex-direction: column;
+  }
+} /*1200 992 768 600 425*/

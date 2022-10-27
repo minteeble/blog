@@ -19,3 +19,9 @@
     transition: all ease-in 0.2s;
   }
 }
+
+@media only screen and (max-width: 425px) {
+  .cta {
+    font-size: 0.7rem;
+  }
+}

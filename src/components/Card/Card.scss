@@ -7,12 +7,7 @@
   align-items: flex-start;
   color: white;
   padding: 1rem;
-  background: linear-gradient(
-      180deg,
-      rgba(1, 1, 1, 0.06) 0%,
-      rgba(0, 0, 0, 0.6) 100%
-    ),
-    var(--img);
+  background: linear-gradient(180deg, rgba(1, 1, 1, 0.06) 0%, rgba(0, 0, 0, 0.6) 100%), var(--img);
   background-repeat: no-repeat;
   background-position: center;
   background-size: auto 100%;
@@ -31,5 +26,30 @@
 
   .card-title {
     margin-bottom: 2rem;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .card {
+    height: 15rem;
+    background-size: cover;
+    &:hover {
+      height: 24rem;
+      width: 100%;
+    }
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .card {
+    .card-topic {
+      font-size: 0.6rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .card-title {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
   }
 }

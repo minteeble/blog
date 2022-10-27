@@ -154,13 +154,14 @@ const BlogNav = (props: BlogNavProps) => {
           },
           {
             content: (
-              <div className="nav-topic kanit" style={style}>
-                <h3
-                  className="nav-topic-title"
-                  onClick={() => {
-                    openDropdown();
-                  }}
-                >
+              <div
+                className="nav-topic kanit"
+                style={style}
+                onClick={() => {
+                  openDropdown();
+                }}
+              >
+                <h3 className="nav-topic-title">
                   Categories
                   <FontAwesomeIcon className="nav-topic-arrow" icon={faCaretDown} />
                 </h3>
