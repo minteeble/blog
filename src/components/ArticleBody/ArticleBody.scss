@@ -66,6 +66,16 @@
         background: var(--primary-color);
       }
     }
+    h3,
+    h4,
+    h5,
+    h6 {
+      @extend h2;
+      margin: 0 0 0.5rem 0;
+      &::after {
+        height: 0.2rem;
+      }
+    }
   }
   figcaption {
     display: none;

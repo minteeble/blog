@@ -43,7 +43,6 @@
 
     .preview-info-content {
       text-align: justify;
-      margin-bottom: auto;
       color: var(--normal-text-color);
       p {
         display: none;
@@ -52,7 +51,7 @@
         display: block;
         overflow: hidden;
         text-overflow: ellipsis;
-        height: 100%;
+        height: 70%;
         font-size: 1rem;
         font-weight: 500;
         line-height: 1.1rem;
@@ -64,6 +63,8 @@
 @media only screen and (max-width: 1200px) {
   .preview {
     height: 12.5rem;
+    width: 65%;
+
     .preview-wrapper {
       min-width: 22.2rem;
       height: 12.5rem;
@@ -72,7 +73,19 @@
 
     .preview-info-topic {
       font-size: 0.9rem;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.4rem !important;
+    }
+
+    .preview-info-title {
+      font-size: 1.3rem;
+      margin-bottom: 0.6rem !important;
+      line-height: 1.3rem !important;
+    }
+
+    .preview-info-content {
+      p:first-child {
+        font-size: 0.8rem !important;
+      }
     }
   }
 }
