@@ -37,6 +37,7 @@
 
     .preview-info-title {
       margin-bottom: 1rem;
+      line-height: 1.5rem;
       color: var(--normal-text-color);
     }
 
@@ -56,6 +57,22 @@
         font-weight: 500;
         line-height: 1.1rem;
       }
+    }
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .preview {
+    height: 12.5rem;
+    .preview-wrapper {
+      min-width: 22.2rem;
+      height: 12.5rem;
+      margin-right: 1rem;
+    }
+
+    .preview-info-topic {
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
     }
   }
 }
