@@ -141,7 +141,6 @@ const HomePage = () => {
         )}
       </div>
       <div className="home-body">
-        <Sidebar />
         {isLoaded ? (
           Previews.map((x: PreviewProps, index: number) => {
             return (
@@ -158,6 +157,7 @@ const HomePage = () => {
         ) : (
           <LoadingSpinner Size={LoadingSpinnerSize.Large} />
         )}
+        <Sidebar />
       </div>
     </>
   );
