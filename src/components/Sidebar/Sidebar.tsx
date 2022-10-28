@@ -116,7 +116,7 @@ const Sidebar = (props: SidebarProps) => {
 
   return (
     <>
-      <aside id="sidebar">
+      <aside className="sidebar">
         {sections.map((x: any, index: number) => {
           return <SidebarSection key={index} name={sections[index]} data={SidebarData} />;
         })}

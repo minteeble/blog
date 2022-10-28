@@ -89,3 +89,33 @@
     }
   }
 }
+
+@media only screen and (max-width: 992px) {
+  .preview {
+    height: 10rem;
+    width: 65%;
+
+    .preview-wrapper {
+      min-width: 17.7rem;
+      height: 10rem;
+      margin-right: 1rem;
+    }
+
+    .preview-info-topic {
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem !important;
+    }
+
+    .preview-info-title {
+      font-size: 1.1rem;
+      margin-bottom: 0.6rem !important;
+      line-height: 1.3rem !important;
+    }
+
+    .preview-info-content {
+      p:first-child {
+        font-size: 0.8rem !important;
+      }
+    }
+  }
+}
