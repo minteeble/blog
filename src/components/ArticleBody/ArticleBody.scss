@@ -76,9 +76,13 @@
         height: 0.2rem;
       }
     }
-  }
-  figcaption {
-    display: none;
+    figcaption {
+      display: none;
+    }
+    ul {
+      margin-left: 1rem;
+      list-style-type: circle;
+    }
   }
 
   .article-body-share {
