@@ -19,15 +19,24 @@
 @media only screen and (max-width: 992px) {
   .topic-body {
     .topic-body-title {
-      font-size: 30px;
+      font-size: 25px;
     }
   }
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 768px) {
   .topic-body {
     .topic-body-title {
       max-width: 100%;
+      font-size: 28px;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .topic-body {
+    .topic-body-title {
+      font-size: 23px;
     }
   }
 }

@@ -42,6 +42,10 @@
       font-weight: 600;
       display: inline;
       color: var(--normal-text-color);
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      max-width: 100%;
     }
 
     .sidebar-preview-info-content {
@@ -51,9 +55,15 @@
       width: 100%;
       overflow: hidden;
       color: var(--normal-text-color);
+
       p {
         text-overflow: ellipsis;
         line-height: 1.2rem;
+        word-wrap: normal;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
+        width: 100%;
       }
     }
   }
@@ -70,6 +80,11 @@
     .sidebar-preview-info {
       max-height: 5rem;
       max-width: 12rem;
+      .sidebar-preview-info-content {
+        p {
+          -webkit-line-clamp: 3;
+        }
+      }
     }
   }
 }
@@ -83,6 +98,11 @@
     }
     .sidebar-preview-info {
       max-width: 10rem;
+      .sidebar-preview-info-content {
+        p {
+          -webkit-line-clamp: 2;
+        }
+      }
     }
   }
 }
@@ -98,6 +118,12 @@
       margin-top: 0.4rem;
       max-width: 70%;
       height: 7rem;
+      .sidebar-preview-info-content {
+        margin-top: 0.2rem;
+        p {
+          -webkit-line-clamp: 3;
+        }
+      }
     }
   }
 }
@@ -106,6 +132,12 @@
   .sidebar-preview {
     .sidebar-preview-info {
       max-width: 65%;
+      .sidebar-preview-info-title {
+        width: 90%;
+      }
+      .sidebar-preview-info-content {
+        width: 90%;
+      }
     }
   }
 }

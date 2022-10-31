@@ -50,8 +50,43 @@
   }
 }
 
+@media only screen and (max-width: 768px) {
+  .error-body {
+    .error-body-box {
+      .error-body-box-title {
+        font-size: 2.5rem;
+      }
+    }
+    .error-body-text {
+      font-size: 0.9rem;
+    }
+
+    .error-body-btn {
+      margin-top: 2rem;
+    }
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .error-body {
     min-height: 60vh;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .error-body {
+    .error-body-box {
+      .error-body-box-title {
+        font-size: 2rem;
+      }
+    }
+    .error-body-text {
+      font-size: 0.7rem;
+    }
+
+    .error-body-btn {
+      margin-top: 1.5rem;
+      font-size: 0.8rem;
+    }
   }
 }
