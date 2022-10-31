@@ -6,7 +6,6 @@ const Topic = () => {
     <>
       <div className="topic" style={{ position: "relative" }}>
         <TopicPage />
-        <Sidebar />
       </div>
     </>
   );

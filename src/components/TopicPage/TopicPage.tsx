@@ -135,6 +135,7 @@ const TopicPage = () => {
           <LoadingSpinner Size={LoadingSpinnerSize.Large} />
         )}
       </div>
+      <Sidebar />
     </>
   );
 };

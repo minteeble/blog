@@ -1,6 +1,7 @@
 .topic-body {
   min-height: 150vh;
   .topic-body-title {
+    max-width: 60%;
     margin: 0.1rem 0 4rem 0;
     font-style: normal;
     font-weight: 500;
@@ -12,5 +13,21 @@
   .loading-spinner {
     width: 65%;
     padding-top: 6rem;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .topic-body {
+    .topic-body-title {
+      font-size: 30px;
+    }
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .topic-body {
+    .topic-body-title {
+      max-width: 100%;
+    }
   }
 }
