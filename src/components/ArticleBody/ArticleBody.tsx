@@ -19,7 +19,6 @@ const ArticleBody = (props: ArticleBodyProps) => {
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   return (
     <>
-      <Sidebar article={true} id={props.id} />
       <div className="article-body">
         {props.title.length > 0 ? (
           <>
@@ -92,6 +91,7 @@ const ArticleBody = (props: ArticleBodyProps) => {
           <span className="article-body-share-line"></span>
         </div>
       </div>
+      <Sidebar article={true} id={props.id} />
       <div className="article-body-related">
         <h4 className="article-body-related-title spaced">related posts</h4>
         <div className="article-body-related-wrapper montserrat">

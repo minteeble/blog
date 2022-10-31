@@ -59,9 +59,11 @@ export class ServerUtils {
     } else {
       const seoInfo = result.data.data.post.seo;
 
-      res.title = seoInfo.title;
-      res.image = seoInfo.opengraphImage.guid;
-      res.description = seoInfo.metaDesc;
+      res.title = seoInfo.title || "Minteeble";
+      res.image =
+        seoInfo.opengraphImage?.guid ||
+        "https://cms-blog-backend.minteeble.com/wp-content/uploads/2022/09/Desktop-1.jpg";
+      res.description = seoInfo.metaDesc || "Minteeble Article";
     }
 
     return res;

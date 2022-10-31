@@ -1,5 +1,6 @@
 .nextprev {
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
   margin-top: 4rem;
@@ -8,12 +9,14 @@
     background: var(--border-color);
     color: var(--normal-text-color);
     padding: 0.3rem;
-    width: 30%;
+    width: fit-content;
+    min-width: 30%;
 
     .nextprev-link-body {
       display: flex;
       flex-direction: column;
       justify-content: center;
+      flex-wrap: nowrap;
       width: fit-content;
 
       .nextprev-link-body-text {
@@ -21,6 +24,9 @@
         font-weight: 700;
         font-size: 20px;
         line-height: 129.9%;
+        word-wrap: break-word;
+        white-space: nowrap;
+
         .nextprev-link-body-text-arrow {
           color: var(--light-text-color);
           margin: 0 0.4rem 0 0;
@@ -32,7 +38,6 @@
         background: var(--primary-color);
         transition: all ease-in 0.2s;
       }
-
       &:hover .nextprev-link-body-line {
         width: 100%;
       }
@@ -52,5 +57,29 @@
   .disabled {
     pointer-events: none;
     visibility: hidden;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .nextprev {
+    .nextprev-link {
+      .nextprev-link-body {
+        .nextprev-link-body-text {
+          font-size: 15px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .nextprev {
+    .nextprev-link {
+      .nextprev-link-body {
+        .nextprev-link-body-text {
+          font-size: 14px;
+        }
+      }
+    }
   }
 }
