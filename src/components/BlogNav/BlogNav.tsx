@@ -21,24 +21,21 @@ import { faFacebook, faInstagram, faTiktok } from "@fortawesome/free-brands-svg-
 const BlogNav = (props: BlogNavProps) => {
   const [dark, setDark] = useState<boolean>(false);
   const [lang, setLang] = useState<string>("en");
+  const [dropdownOpened, setDropdownOpened] = useState<boolean>(false);
+  const [themeSwitch, setThemeSwitch] = useState<boolean>(false);
 
   const openDropdown = () => {
-    const topic = document.querySelector(".nav-topic");
-    topic?.classList.toggle("opened");
+    setDropdownOpened((openState) => !openState);
   };
 
   const closeDropdown = () => {
-    const topic = document.querySelector(".nav-topic");
-    if (topic!.classList.contains("opened")) {
-      topic!.classList.remove("opened");
-    }
+    setDropdownOpened(false);
   };
 
   const handleTheme = () => {
-    const trigger = document.querySelector(".nav-theme-trigger");
-    trigger!.classList.toggle("active");
+    setThemeSwitch((t) => !t);
 
-    const body = document.querySelector("body");
+    const body = document.body;
 
     if (body!.classList.contains("minteeble-default-theme")) {
       body!.classList.remove("minteeble-default-theme");
@@ -155,7 +152,7 @@ const BlogNav = (props: BlogNavProps) => {
           {
             content: (
               <div
-                className="nav-topic kanit"
+                className={`nav-topic kanit ${dropdownOpened ? "opened" : ""}`}
                 style={style}
                 onClick={() => {
                   openDropdown();
@@ -170,14 +167,15 @@ const BlogNav = (props: BlogNavProps) => {
                     {isLoaded ? (
                       navData.map((x: navData, index: number) => {
                         return (
-                          <li key={index} className="nav-topic-dropdown-list-item">
-                            <Link
-                              onClick={() => {
-                                closeDropdown();
-                              }}
-                              className="nav-topic-dropdown-list-item-link"
-                              to={`/en/${x.slug}`}
-                            >
+                          <li
+                            key={index}
+                            className="nav-topic-dropdown-list-item"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              closeDropdown();
+                            }}
+                          >
+                            <Link className="nav-topic-dropdown-list-item-link" to={`/en/${x.slug}`}>
                               {x.name}
                             </Link>
                             <span className="nav-topic-dropdown-list-item-line"></span>
@@ -212,7 +210,7 @@ const BlogNav = (props: BlogNavProps) => {
                     handleTheme();
                   }}
                 >
-                  <div className="nav-theme-trigger">
+                  <div className={`nav-theme-trigger ${themeSwitch ? "active" : ""}`}>
                     <FontAwesomeIcon icon={!dark ? faMoon : faSun} />
                   </div>
                 </div>
