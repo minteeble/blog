@@ -93,15 +93,26 @@
 
 > WP Plugins
 
-## Frontend remove
+### WP File Manager
 
-- Create a Wordpress custom theme structure
-  **index.php**
-  **style.css**
-- index.php
+> allow to edit wp files
 
-  `<?php header( "Location: https://blog.minteeble.com" ); ?>`
+#### Setup
 
-- style.css
+- No Setup Required
 
-  `/* Theme Name: turn off frontend Theme URI: Description: Author: Version: License: GNU License URI: Tags: */`
+#### Installation
+
+> WP Plugins
+
+### Headless Mode
+
+> Add a redirect to React frontend and disable wp indexing
+
+#### Setup
+
+- From WP File Manager add "define( 'HEADLESS_MODE_CLIENT_URL', 'https://blog.minteeble.com' );" to wp-config.php
+
+#### Installation
+
+> WP Plugins
