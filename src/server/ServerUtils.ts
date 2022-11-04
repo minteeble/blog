@@ -5,14 +5,26 @@ const fs = require("fs");
 const axios = require("axios");
 
 export class ServerUtils {
-  public static readonly pathRegex = /^[\/](en|it)[\/][A-Za-z0-9_-]+[\/][A-Za-z0-9_-]+/;
+  public static readonly postRegex = /^[\/](en|it)[\/][A-Za-z0-9_-]+[\/][A-Za-z0-9_-]+/;
+
+  public static readonly topicRegex = /^[\/](en|it)[\/][A-Za-z0-9_-]+/;
+
+  public static readonly homeRegex = /^[\/](en|it)+/;
 
   public static readonly sitemapRegex = /^[\/]sitemap[\.]xml[\/]{0,1}$/;
 
   public static readonly feedRegex = /^[\/]((en|it)[\/]|(en|it)[\/][A-Za-z0-9_-]+[\/][A-Za-z0-9_-]+[\/])feed/;
 
   public static isPostPathValid(path: string): boolean {
-    return this.pathRegex.test(path);
+    return this.postRegex.test(path);
+  }
+
+  public static isTopicPathValid(path: string): boolean {
+    return this.topicRegex.test(path);
+  }
+
+  public static isHomePathValid(path: string): boolean {
+    return this.homeRegex.test(path);
   }
 
   public static isFeedPathValid(path: string): boolean {
@@ -69,6 +81,70 @@ export class ServerUtils {
     return res;
   };
 
+  public static getHomeMetaInfo = (path: string): MetaInfo => {
+    let res: MetaInfo = {
+      title: "",
+      description: "",
+      image: "",
+    };
+
+    if (path.slice(1, 3) === "it") {
+      res = {
+        title: "Minteeble blog",
+        description: "Benvenuto nel blog di Minteeble",
+        image: "https://cms-blog-backend.minteeble.com/wp-content/uploads/2022/09/Desktop-1.jpg",
+      };
+    } else {
+      res = {
+        title: "Minteeble blog",
+        description: "Welcome in the blog of Minteeble",
+        image: "https://cms-blog-backend.minteeble.com/wp-content/uploads/2022/09/Desktop-1.jpg",
+      };
+    }
+
+    return res;
+  };
+
+  public static getTopicMetaInfo = async (path: string): Promise<MetaInfo> => {
+    const endpoint = "https://cms-blog-backend.minteeble.com/mintql";
+
+    let res: MetaInfo = {
+      title: "",
+      description: "",
+      image: "",
+    };
+
+    const topic = path.slice(4, path.length);
+
+    const query = `{
+      posts(where: {categoryName: "${topic}"}) {
+        edges {
+          node {
+            featuredImage {
+              node {
+                guid
+              }
+            }
+          }
+        }
+      }
+    }`;
+
+    let result = await axios({
+      url: endpoint,
+      method: "post",
+      data: {
+        query: query,
+      },
+    });
+
+    res.title = topic.charAt(0).toUpperCase() + topic.slice(1);
+    res.description = path.slice(1, 3) === "it" ? `Tutti gli articoli su ${topic}` : `All articles about ${topic}`;
+    res.image = result.data.data.posts.edges[0].node.featuredImage.node.guid;
+
+    return res;
+  };
+
   public static getMetaInfo(path: string): MetaInfo | Promise<MetaInfo> {
     const defaultMetaInfo: MetaInfo = {
       title: "Minteeble",
@@ -76,13 +152,19 @@ export class ServerUtils {
       image: "https://cms-blog-backend.minteeble.com/wp-content/uploads/2022/09/Desktop-1.jpg",
     };
 
-    let isValid = this.isPostPathValid(path);
-
-    if (!isValid) {
-      return defaultMetaInfo;
+    if (this.isPostPathValid(path)) {
+      return this.getPostMetaInfo(path);
     }
 
-    return this.getPostMetaInfo(path);
+    if (this.isTopicPathValid(path)) {
+      return this.getTopicMetaInfo(path);
+    }
+
+    if (this.isHomePathValid(path)) {
+      return this.getHomeMetaInfo(path);
+    }
+
+    return defaultMetaInfo;
   }
 
   public static isSitemapPathValid(path: string): boolean {

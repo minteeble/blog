@@ -72,7 +72,7 @@ const BlogNav = (props: BlogNavProps) => {
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
   const navQuery = `{
-        categories {
+    categories(where: {language: ${lang.toLocaleUpperCase()}}) {
           edges {
             node {
               name
@@ -175,7 +175,7 @@ const BlogNav = (props: BlogNavProps) => {
                               closeDropdown();
                             }}
                           >
-                            <Link className="nav-topic-dropdown-list-item-link" to={`/en/${x.slug}`}>
+                            <Link className="nav-topic-dropdown-list-item-link" to={`/${lang}/${x.slug} `}>
                               {x.name}
                             </Link>
                             <span className="nav-topic-dropdown-list-item-line"></span>

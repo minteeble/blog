@@ -44,7 +44,7 @@ export default function App() {
             {/** @ts-ignore */}
             <Route path="/:lang/not-found" element={<Error />}></Route>
             {/** @ts-ignore */}
-            <Route path="*" element={<Error />}></Route>
+            <Route path="*" element={<Navigate to={"/:lang/not-found"} />}></Route>
           </Routes>
         </div>
       </main>
