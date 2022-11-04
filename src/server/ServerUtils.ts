@@ -136,6 +136,38 @@ export class ServerUtils {
     }
     `;
 
+    const topicQueryEn = `{
+      categories(where: {language: EN}) {
+        nodes {
+          uri
+          posts {
+            edges {
+              node {
+                uri
+                modifiedGmt
+              }
+            }
+          }
+        }
+      }
+    }`;
+
+    const topicQueryIt = `{
+      categories(where: {language: IT}) {
+        nodes {
+          uri
+          posts {
+            edges {
+              node {
+                uri
+                modifiedGmt
+              }
+            }
+          }
+        }
+      }
+    }`;
+
     let promiseIt = axios({
       url: endpoint,
       method: "post",
@@ -152,7 +184,28 @@ export class ServerUtils {
       },
     });
 
-    let [resultIt, resultEn] = await Promise.all([promiseIt, promiseEn]);
+    let promiseTopicEn = axios({
+      url: endpoint,
+      method: "post",
+      data: {
+        query: topicQueryEn,
+      },
+    });
+
+    let promiseTopicIt = axios({
+      url: endpoint,
+      method: "post",
+      data: {
+        query: topicQueryIt,
+      },
+    });
+
+    let [resultIt, resultEn, resultTopicEn, resultTopicIt] = await Promise.all([
+      promiseIt,
+      promiseEn,
+      promiseTopicEn,
+      promiseTopicIt,
+    ]);
 
     let urls = [];
     let short = [...resultEn.data.data.posts.edges, ...resultIt.data.data.posts.edges];
@@ -165,11 +218,34 @@ export class ServerUtils {
       urls.push(x);
     }
 
-    // console.log(node);
+    let topic = [];
+    const topicShort = [...resultTopicEn.data.data.categories.nodes, ...resultTopicIt.data.data.categories.nodes];
+    const topicNode = topicShort.length > 0 ? topicShort.length : 0;
+    for (let i = 0; i < topicNode; i++) {
+      if (topicShort[i].posts.edges.length > 0) {
+        let x = {
+          loc: `https://blog.minteeble.com${topicShort[i].uri.replace("category/", "")}`,
+          lastmod: `${topicShort[i].posts.edges[0].node.modifiedGmt}`,
+        };
+        topic.push(x);
+      }
+    }
 
     let outData = format(
       `<?xml version="1.0" encoding="UTF-8"?>
-      <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls
+      <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+      <url><loc>https://blog.minteeble.com</loc><lastmod>${
+        urls[0].lastmod
+      }+00:00</lastmod></url><url><loc>https://blog.minteeble.com/en</loc><lastmod>${
+        urls[0].lastmod
+      }+00:00</lastmod></url><url><loc>https://blog.minteeble.com/it</loc><lastmod>${
+        urls[urls.length / 2].lastmod
+      }+00:00</lastmod></url>
+      ${urls
+        .map((x) => {
+          return `<url><loc>${x.loc}</loc><lastmod>${x.lastmod}+00:00</lastmod></url>`;
+        })
+        .join("")}${topic
         .map((x) => {
           return `<url><loc>${x.loc}</loc><lastmod>${x.lastmod}+00:00</lastmod></url>`;
         })
