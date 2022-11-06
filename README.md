@@ -111,8 +111,37 @@
 
 #### Setup
 
-- From WP File Manager add "define( 'HEADLESS_MODE_CLIENT_URL', 'https://blog.minteeble.com' );" to wp-config.php
+- From WP File Manager open
+
+`wp-content>plugins>headless-mode>headless-mode.php`
+
+then replace
+
+```php
+if( apply_filters( 'headless_mode_will_redirect', true, $new_url ) ){
+    headless_mode_redirect( $new_url, true );
+			exit();
+  }
+```
+
+with
+
+````php
+if( apply_filters( 'headless_mode_will_redirect', true, $new_url ) ){
+
+        	if(preg_match("/.*\/feed[\/]{0,1}$/i",  $new_url)) {
+
+            	return;
+
+    		} else {
+            	headless_mode_redirect( $new_url, true );
+				exit();
+            }
+
+		}
+    ```
 
 #### Installation
 
 > WP Plugins
+````
